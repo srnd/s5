@@ -1,0 +1,28 @@
+{% extends 'template.twig' %}
+{% block title %}Login{% endblock %}
+{% block page %}login{% endblock %}
+{% block section %}login{% endblock %}
+{% block content %}
+    <h1>StudentRND Login</h1>
+    {% if logged_out %}
+        <section class="success">
+            You have been logged out.
+        </section>
+    {% elseif invalid_login %}
+        <section class="error">
+            That username does not exist or the password did not match.
+        </section>
+    {% endif %}
+    <form method="post">
+        <section>
+            <input type="text" name="username" id="username" placeholder="Username" required />
+            <input type="password" name="password" id="password" placeholder="Password" required />
+        </section>
+        <input type="submit" value="Login" />
+    </form>
+    {# <p>Forgot your <a href="/login/forgot">username</a> or <a href="/login/forgot">password</a>?</p> #}
+    <p><a href="/about/accounts">Don't have an account?</a></p>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="/assets/js/login.js"></script>
+{% endblock %}

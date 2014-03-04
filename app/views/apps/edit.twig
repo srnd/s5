@@ -1,0 +1,34 @@
+{% extends 'template.twig' %}
+{% block title %}Apps{% endblock %}
+{% block page %}list apps{% endblock %}
+{% block section %}apps{% endblock %}
+{% block content %}
+    <h1>App Information</h1>
+    <form action="">
+        <p>Token:</p>
+        <section>
+            <input type="text" readonly value="{{ app.token }}" />
+        </section>
+        <p>Secret:</p>
+        <section>
+            <input type="text" readonly value="{{ app.secret }}" />
+        </section>
+    </form>
+
+    <h1>Edit {{ app.name }}</h1>
+    <form method="post" autocomplete="off">
+        <input type="text" name="name" id="name" placeholder="Name" required value="{{ app.name }}" autocomplete="off" />
+        <textarea name="description" id="description" placeholder="Description" required>{{ app.description }}</textarea>
+
+        {% if me.is_admin %}
+            <input type="checkbox" name="whitelist_login" id="whitelist_login" value="1" {% if app.whitelist_login %}checked{% endif %} />
+            <label for="whitelist_login">Whitelist Login</label>
+            <input type="checkbox" name="whitelist_extended" id="whitelist_extended" value="1" {% if app.whitelist_extended %}checked{% endif %} />
+            <label for="whitelist_extended">Whitelist Extended</label>
+            <input type="checkbox" name="allow_internal" id="allow_internal" value="1" {% if app.allow_internal %}checked{% endif %} />
+            <label for="allow_internal">Allow Internal</label>
+        {% endif %}
+
+        <input type="submit" value="Update" />
+    </form>
+{% endblock %}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>{% if block('title') %}{{ block('title') }} // {% endif %}s5</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body
+    {% if block('page') or block('section') %}
+        class="{% if block('page') %}
+                    {{ block('page') }}
+                {% else %}
+                    {{ block('section') }}
+                {% endif %}"
+    {% endif %}>
+<script type="text/javascript" data-cfasync="false" src="//use.typekit.net/mvs6fyv.js"></script>
+<script type="text/javascript" data-cfasync="false">try{Typekit.load();}catch(e){}</script>
+<script type="text/javascript" src="/assets/js/rainbow-background.js" data-cfasync="false"></script>
+<header>
+    <h1><a href="/me">s5</a></h1>
+    <nav>
+        <ul>
+            {% if me %}
+                <li><a href="/user/{{ me.username }}/edit">Information</a></li>
+                <li><a href="/user/{{ me.username }}/password">Password</a></li>
+                <li><a href="/apps">Apps</a></li>
+                {% if me.is_admin %}
+                    <li><a href="/admin/">Admin</a></li>
+                {% endif %}
+                <li><a href="/login/logout">Logout</a></li>
+            {% else %}
+                <li><a href="/login">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+{{ block('before') }}
+<section class="content">
+    {{ block('content') }}
+</section>
+{{ block('after') }}
+
+<script type="text/javascript" src="/assets/js/util.js"></script>
+{{ block('scripts') }}
+</body>
+</html>

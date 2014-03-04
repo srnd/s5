@@ -1,0 +1,235 @@
+body {
+  background-color: #0ac0c2;
+  color: #fff;
+  margin: 0;
+  font-family: "proxima-nova", sans-serif;
+  font-weight: lighter; }
+  body * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box; }
+  body a, body a:visited {
+    color: #fff; }
+  body header {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 1rem; }
+    body header h1 {
+      float: left; }
+      body header h1 a {
+        text-decoration: none; }
+    body header nav {
+      float: right;
+      position: relative;
+      top: 1rem; }
+      body header nav ul {
+        padding: 0; }
+        body header nav ul li {
+          display: inline-block; }
+          body header nav ul li a {
+            padding: 0.5rem; }
+  body section.content {
+    clear: both;
+    width: 100%;
+    max-width: 600px;
+    margin: 3rem auto 1rem;
+    padding-top: 0.5rem; }
+    body section.content h1 {
+      width: 100%;
+      font-weight: lighter; }
+    body section.content section.error, body section.content section.success {
+      margin: 1rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      text-align: center;
+      padding: 1rem; }
+      body section.content section.error.error, body section.content section.success.error {
+        background: rgba(255, 0, 0, 0.5); }
+      body section.content section.error.success, body section.content section.success.success {
+        background: rgba(0, 255, 0, 0.5); }
+    body section.content form {
+      width: 100%;
+      margin: 1rem 0;
+      text-align: right; }
+      body section.content form h1, body section.content form h2, body section.content form h3, body section.content form h4, body section.content form h5, body section.content form h6, body section.content form p, body section.content form ul {
+        text-align: left; }
+      body section.content form input[type="submit"] {
+        display: inline-block;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        background-color: transparent;
+        margin: 0;
+        color: #fff;
+        border-top-width: 0;
+        font-size: 1rem;
+        padding: 1rem 2rem; }
+        body section.content form input[type="submit"]:first-child {
+          border-top-width: 1px; }
+        body section.content form input[type="submit"]:hover {
+          margin-top: -1px;
+          border-top-width: 1px;
+          border-color: #fff; }
+        body section.content form input[type="submit"]:focus, body section.content form input[type="submit"]:active {
+          outline-width: 0;
+          background: rgba(255, 255, 255, 0.5); }
+      body section.content form textarea {
+        height: 10rem; }
+      body section.content form input[type="text"],
+      body section.content form input[type="password"],
+      body section.content form input[type="tel"],
+      body section.content form input[type="email"],
+      body section.content form textarea,
+      body section.content form select {
+        display: block;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        background-color: transparent;
+        margin: 0;
+        color: #fff;
+        border-top-width: 0;
+        -webkit-appearance: none;
+        border-radius: 0;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+        font-size: 1rem;
+        padding: 1rem 2rem;
+        width: 100%; }
+        body section.content form input[type="text"]:first-child,
+        body section.content form input[type="password"]:first-child,
+        body section.content form input[type="tel"]:first-child,
+        body section.content form input[type="email"]:first-child,
+        body section.content form textarea:first-child,
+        body section.content form select:first-child {
+          border-top-width: 1px; }
+          body section.content form input[type="text"]:first-child:focus,
+          body section.content form input[type="password"]:first-child:focus,
+          body section.content form input[type="tel"]:first-child:focus,
+          body section.content form input[type="email"]:first-child:focus,
+          body section.content form textarea:first-child:focus,
+          body section.content form select:first-child:focus {
+            margin-top: 0; }
+        body section.content form input[type="text"].available,
+        body section.content form input[type="password"].available,
+        body section.content form input[type="tel"].available,
+        body section.content form input[type="email"].available,
+        body section.content form textarea.available,
+        body section.content form select.available {
+          border-color: #0f0;
+          z-index: 100; }
+          body section.content form input[type="text"].available:not(:first-child),
+          body section.content form input[type="password"].available:not(:first-child),
+          body section.content form input[type="tel"].available:not(:first-child),
+          body section.content form input[type="email"].available:not(:first-child),
+          body section.content form textarea.available:not(:first-child),
+          body section.content form select.available:not(:first-child) {
+            border-top-width: 1px;
+            margin-top: -1px; }
+        body section.content form input[type="text"].taken,
+        body section.content form input[type="password"].taken,
+        body section.content form input[type="tel"].taken,
+        body section.content form input[type="email"].taken,
+        body section.content form textarea.taken,
+        body section.content form select.taken {
+          border-color: #f00;
+          z-index: 100; }
+          body section.content form input[type="text"].taken:not(:first-child),
+          body section.content form input[type="password"].taken:not(:first-child),
+          body section.content form input[type="tel"].taken:not(:first-child),
+          body section.content form input[type="email"].taken:not(:first-child),
+          body section.content form textarea.taken:not(:first-child),
+          body section.content form select.taken:not(:first-child) {
+            border-top-width: 1px;
+            margin-top: -1px; }
+        body section.content form input[type="text"]:focus,
+        body section.content form input[type="password"]:focus,
+        body section.content form input[type="tel"]:focus,
+        body section.content form input[type="email"]:focus,
+        body section.content form textarea:focus,
+        body section.content form select:focus {
+          outline-width: 0;
+          border-color: #fff;
+          margin-top: -1px;
+          border-top-width: 1px; }
+        body section.content form input[type="text"]::-webkit-input-placeholder,
+        body section.content form input[type="password"]::-webkit-input-placeholder,
+        body section.content form input[type="tel"]::-webkit-input-placeholder,
+        body section.content form input[type="email"]::-webkit-input-placeholder,
+        body section.content form textarea::-webkit-input-placeholder,
+        body section.content form select::-webkit-input-placeholder {
+          color: rgba(255, 255, 255, 0.5);
+          font-weight: lighter; }
+        body section.content form input[type="text"]:-moz-placeholder,
+        body section.content form input[type="password"]:-moz-placeholder,
+        body section.content form input[type="tel"]:-moz-placeholder,
+        body section.content form input[type="email"]:-moz-placeholder,
+        body section.content form textarea:-moz-placeholder,
+        body section.content form select:-moz-placeholder {
+          color: rgba(255, 255, 255, 0.5);
+          font-weight: lighter; }
+        body section.content form input[type="text"]::-moz-placeholder,
+        body section.content form input[type="password"]::-moz-placeholder,
+        body section.content form input[type="tel"]::-moz-placeholder,
+        body section.content form input[type="email"]::-moz-placeholder,
+        body section.content form textarea::-moz-placeholder,
+        body section.content form select::-moz-placeholder {
+          color: rgba(255, 255, 255, 0.5);
+          font-weight: lighter; }
+        body section.content form input[type="text"]:-ms-input-placeholder,
+        body section.content form input[type="password"]:-ms-input-placeholder,
+        body section.content form input[type="tel"]:-ms-input-placeholder,
+        body section.content form input[type="email"]:-ms-input-placeholder,
+        body section.content form textarea:-ms-input-placeholder,
+        body section.content form select:-ms-input-placeholder {
+          color: rgba(255, 255, 255, 0.5);
+          font-weight: lighter; }
+    body section.content ul form {
+      display: inline; }
+      body section.content ul form input[type="submit"] {
+        padding: 0;
+        border: 0;
+        float: none;
+        display: inline-block;
+        font-weight: bold; }
+        body section.content ul form input[type="submit"]:hover {
+          margin-top: 0; }
+    body section.content p {
+      font-size: 1rem; }
+      body section.content p:last-child {
+        margin-bottom: 4rem; }
+      body section.content p, body section.content p a, body section.content p a:hover {
+        color: rgba(255, 255, 255, 0.5); }
+
+body.about {
+  background-color: #0ac0c2;
+  color: #fff;
+  margin: 0;
+  font-family: "proxima-nova", sans-serif;
+  font-weight: lighter; }
+  body.about * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box; }
+  body.about a, body.about a:visited {
+    color: #fff; }
+  body.about h1 {
+    width: 100%;
+    max-width: 600px;
+    margin: 4rem auto 0;
+    font-weight: lighter; }
+  body.about p {
+    font-size: 1rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 1rem auto 0; }
+    body.about p:last-child {
+      margin-bottom: 4rem; }
+
+body.user section.photo {
+  text-align: center; }
+body.user form input#city, body.user form input#state, body.user form input#postal_code {
+  display: inline-block;
+  margin: inherit 0 0 -1px; }
+  body.user form input#city:first-child, body.user form input#state:first-child, body.user form input#postal_code:first-child {
+    margin-left: 0; }
+body.user form input#city {
+  width: 40%; }
+body.user form input#state {
+  width: 30%; }
+body.user form input#postal_code {
+  width: 30%; }

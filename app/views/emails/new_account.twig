@@ -1,0 +1,14 @@
+{% extends "emails/template.twig" %}
+{% block content %}
+<h1>Hi {{ user.name }}!</h1>
+<p>We're excited to welcome you to s5, our user management system. Your login details follow:</p>
+<ul>
+    <li><strong>Username:</strong> {{ user.username }}</li>
+    <li><strong>Password:</strong> {% if password %}{{ password }}{% else %}(set by you){% endif %}</li>
+</ul>
+<p>You can log in at {{ link }}.</p>
+<p>
+    Cheers!<br />
+    - the s5 welcome robot
+</p>
+{% endblock %}

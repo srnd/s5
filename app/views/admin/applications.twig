@@ -1,0 +1,43 @@
+{% extends 'template.twig' %}
+{% block title %}Applications // Admin{% endblock %}
+{% block page %}admin applications{% endblock %}
+{% block section %}admin{% endblock %}
+{% block content %}
+    <h1>Applications</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>token</th>
+                <th>wl:login</th>
+                <th>wl:ext</th>
+                <th>wl:int</th>
+                <th>users</th>
+                <th>owners</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for app in apps %}
+                <tr>
+                    <td>{{ app.applicationID }}</td>
+                    <td>{{ app.name }}</td>
+                    <td>{{ app.token }}</td>
+                    <td>{% if app.whitelist_login %}x{% endif %}</td>
+                    <td>{% if app.whitelist_extended %}x{% endif %}</td>
+                    <td>{% if app.whitelist_internal %}x{% endif %}</td>
+                    <td>{{ app.users|length }}</td>
+                    <td>
+                        <ul style="margin: 0;">
+                            {% for user in app.admins %}
+                                <li>{{ user.username }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td><a href="/apps/{{ app.token }}">Edit</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

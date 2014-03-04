@@ -1,0 +1,15 @@
+{% extends 'template.twig' %}
+{% block title %}Delete {{ user.first_name }}?{% endblock %}
+{% block page %}delete user{% endblock %}
+{% block section %}user{% endblock %}
+{% block content %}
+    <h1>
+        Delete {{ user.name }} ({{ user.username }})?
+    </h1>
+    <p>Are you sure you want to delete this user?</p>
+    <form method="post">
+        <input type="submit" value="Delete {{ user.username }}" />
+    </form>
+
+    <p><a href="/user/{{ user.username }}/edit">Cancel</a></p>
+{% endblock %}

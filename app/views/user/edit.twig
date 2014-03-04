@@ -1,0 +1,111 @@
+{% extends 'template.twig' %}
+{% block title %}Editing {{ user.name }}{% endblock %}
+{% block page %}edit user{% endblock %}
+{% block section %}user{% endblock %}
+{% block content %}
+    <h1>{{ user.name }}</h1>
+    {% if success_from == 'changepassword' %}
+        <section class="success">
+            {% if me.userID == user.userID %}
+                Your
+            {% else %}
+                {{ user.first_name }}'s
+            {% endif %}
+            password was changed.
+        </section>
+    {% endif %}
+
+    {% if error == 'required' %}
+        <section class="error">
+            {% if me.is_admin %}
+                Username,
+            {% endif %}
+            First Name, Last Name, and Email are all required.
+        </section>
+    {% elseif error == 'dupeuser' %}
+        <section class="error">
+            That username is already in use by <a href="/user/{{ dupeuser.username }}">{{ dupeuser.name }}</a>.
+        </section>
+    {% elseif error == 'dupeemail' %}
+        <section class="error">
+            That email is already in
+            {% if me.is_admin %}
+                use by <a href="/user/{{ dupeuser.username }}">{{ dupeuser.name }}</a>.
+            {% else %}
+                use.
+            {% endif %}
+        </section>
+    {% endif %}
+
+    <section class="photo">
+        <img id="previewphoto" src="/photo/{{ user.username }}_128.jpg" />
+        <form method="post">
+            <input type="file" name="photo" id="uploadphoto" style="display:none" />
+        </form>
+    </section>
+    <form method="post">
+        <section>
+            <input type="text" name="username" id="username" placeholder="Username" required {% if not me.is_admin %}readonly{% endif %} value="{{ user.username }}" />
+            <input type="text" name="first_name" id="first_name" placeholder="First Name" required value="{{ user.first_name }}" />
+            <input type="text" name="last_name" id="last_name" placeholder="Last Name" required value="{{ user.last_name }}" />
+            <input type="email" name="email" id="email" placeholder="Email" required value="{{ user.email }}" />
+            <input type="tel" pattern="(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]‌​)\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)([2-9]1[02-9]‌​|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})" name="phone" id="phone" placeholder="Phone Number" value="{{ user.phone }}" />
+        </section>
+
+        <h2>Address</h2>
+        <section>
+            <input type="text" name="address_line_1" id="address_line_1" placeholder="Address Line 1" value="{{ user.address_line_1 }}" />
+            <input type="text" name="address_line_2" id="address_line_2" placeholder="Address Line 2" value="{{ user.address_line_2 }}" />
+            <input type="text" name="city" id="city" placeholder="City" value="{{ user.city }}" /><input type="text" name="state" id="state" placeholder="State" value="{{ user.state }}" /><input type="text" name="postal_code" id="postal_code" placeholder="Postal Code" value="{{ user.postal_code }}" />
+            <input type="text" name="country" id="country" placeholder="Country" value="{{ user.country }}" />
+        </section>
+        <input type="checkbox" name="is_admin" id="is_admin" value="1" {% if user.is_admin %}checked{% endif %} />
+        <label for="is_admin">Is admin</label>
+        <input type="submit" value="Update" />
+    </form>
+    <p><a href="/user/{{ user.username }}/password">Want to change
+       {% if user.username == me.username %}your{% else %}{{ user.first_name }}'s{% endif %} password?</a></p>
+    {% if me.is_admin and user.username != me.username %}
+        <p><a href="/user/{{ user.username }}/delete">Trying to delete {{ user.first_name }}?</a></p>
+    {% endif %}
+    <p><a href="/user/{{ user.username }}">Cancel editing</a></p>
+{% endblock %}
+{% block scripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $('#previewphoto').click(function(){
+            $('#uploadphoto').click();
+        });
+
+        $('#uploadphoto').change(function(){
+            var file = this.files[0];
+            name = file.name;
+            size = file.size;
+            type = file.type;
+
+            if(file.name.length < 1) {
+
+            } else if(file.size > (1024*1024*20)) {
+                alert("File uploads are limited to 20MB.");
+            } else if(file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg' ) {
+                alert("Please upload a PNG, JPG, or GIF file.");
+            } else {
+                var formData = new FormData($(this).parent()[0]);
+                $.ajax({
+                    url: '/user/{{ user.username }}/uploadphoto',  //server script to process data
+                    type: 'POST',
+                    success: completeHandler = function(data) {
+                        $('#previewphoto').attr('src', '/photo/{{ user.username }}_128.jpg?'+new Date().getTime());
+                    },
+                    error: errorHandler = function() {
+                        alert("Something went wrong.");
+                    },
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                }, 'json');
+            }
+        });
+    </script>
+{% endblock %}

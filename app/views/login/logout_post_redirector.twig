@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head><title>Logging Out // s5</title></head>
+<body>
+<h1>Logging you out...</h1>
+<form id="logoutform" method="post">
+    <input type="submit" value="Click here to log out" />
+</form>
+<script type="text/javascript">
+    if (window.top === window.self) {
+        document.getElementById('logoutform').submit();
+    }
+</script>
+</body>
+</html>

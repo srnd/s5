@@ -1,0 +1,13 @@
+{% extends 'template.twig' %}
+{% block title %}Apps{% endblock %}
+{% block page %}list apps{% endblock %}
+{% block section %}apps{% endblock %}
+{% block content %}
+    <h1>Apps You Manage</h1>
+    <ul>
+        {% for app in me.createdApplications %}
+            <li><a href="/apps/{{ app.token }}">{{ app.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a class="action" href="/apps/new">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'template.twig' %}
+{% block title %}Editing {{ group.name }} // Admin{% endblock %}
+{% block page %}admin groups new{% endblock %}
+{% block section %}admin{% endblock %}
+{% block content %}
+    <h1>Delete {{ group.name }}?</h1>
+    <p>There is no undo.</p>
+    <form method="post" autocomplete="off">
+        <input type="submit" value="Delete it!" />
+    </form>
+{% endblock %}

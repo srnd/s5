@@ -1,0 +1,29 @@
+{% extends 'template.twig' %}
+{% block title %}Editing {{ group.name }} // Admin{% endblock %}
+{% block page %}admin groups new{% endblock %}
+{% block section %}admin{% endblock %}
+{% block content %}
+    <h1>Editing {{ group.name }}</h1>
+    <form method="post" autocomplete="off">
+        <input type="text" name="name" id="name" placeholder="Name" required value="{{ group.name }}" autocomplete="off" />
+        <textarea name="description" id="description" placeholder="Description" required>{{ group.description }}</textarea>
+        <input type="submit" value="Update" />
+    </form>
+
+    <h1>Users</h1>
+    <ul>
+        {% for user in group.users %}
+            <li>
+                {{ user.name }}
+                <form action="/admin/groups/{{ group.id }}/removemember" method="post">
+                    <input type="hidden" name="userID" value="{{ user.userID }}" />
+                    <input type="submit" value="remove" />
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <form action="/admin/groups/{{ group.id }}/addmember" method="post">
+        <input type="text" name="username" placeholder="username" value="" />
+        <input type="submit" value="Add" />
+    </form>
+{% endblock %}

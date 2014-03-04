@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /login
+Disallow: /me
+Disallow: /user
+Disallow: /admin
+Disallow: /oauth

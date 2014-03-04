@@ -1,0 +1,25 @@
+body.user {
+    section.photo {
+        text-align: center;
+    }
+
+    form {
+        input#city, input#state, input#postal_code {
+            display: inline-block;
+            margin: inherit 0 0 -1px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+        input#city {
+            width: 40%;
+        }
+        input#state {
+            width: 30%;
+        }
+        input#postal_code {
+            width: 30%;
+        }
+    }
+}

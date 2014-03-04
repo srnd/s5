@@ -1,0 +1,39 @@
+body.about {
+
+    * {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+
+    background-color: #0ac0c2;
+    color: #fff;
+    a, a:visited {
+        color: #fff;
+    }
+    margin: 0;
+
+    font: {
+        family: "proxima-nova", sans-serif;
+        weight: lighter;
+    }
+
+    $max-width: 600px;
+
+    h1 {
+        width: 100%;
+        max-width: $max-width;
+        margin: 4rem auto 0;
+        font-weight: lighter;
+    }
+
+    p {
+        font-size: 1rem;
+        width: 100%;
+        max-width: $max-width;
+        margin: 1rem auto 0;
+
+        &:last-child {
+            margin-bottom: 4rem;
+        }
+    }
+}

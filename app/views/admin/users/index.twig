@@ -1,0 +1,40 @@
+{% extends 'template.twig' %}
+{% block title %}Users // Admin{% endblock %}
+{% block page %}admin users{% endblock %}
+{% block section %}admin{% endblock %}
+{% block content %}
+    <h1>Users</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>pic</th>
+                <th>id</th>
+                <th>username</th>
+                <th>name</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td><img src="/photo/{{ user.username }}_16.jpg"</td>
+                    <td>{{ user.userID }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>
+                        <a href="/user/{{ user.username }}/edit">Edit</a>
+
+                        {% if user.trashed %}
+                            <a href="/admin/users/restore/{{ user.username }}">Restore</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if not show_trashed %}
+        <a href="?trashed">Show trashed</a>
+    {% endif %}
+
+    <a class="action" href="/admin/users/new">Create new</a>
+{% endblock %}

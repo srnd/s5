@@ -1,0 +1,21 @@
+{% extends 'template.twig' %}
+{% block title %}Authorize {{ app.name }}?{% endblock %}
+{% block page %}authorize{% endblock %}
+{% block section %}apps{% endblock %}
+{% block content %}
+    <h1>Authorize {{ app.name }}?</h1>
+    <p>If you authorize this application, it will be able to:</p>
+    <ul>
+        <li>Access basic information, such as username, email, full name, and picture.</li>
+        {% if app.whitelist_extended or extended %}
+            <li>Access extended information, such as your phone number and address.</li>
+            <li>Modify your information.</li>
+        {% endif %}
+    </ul>
+    <p>{{ app.name }} describes itself as so:</p>
+    <blockquote>{{ app.description }}</blockquote>
+
+    <form method="post">
+        <input type="submit" value="Authorize" />
+    </form>
+{% endblock %}

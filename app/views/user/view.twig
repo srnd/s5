@@ -1,0 +1,19 @@
+{% extends 'template.twig' %}
+{% block title %}{{ user.name }}{% endblock %}
+{% block page %}view user{% endblock %}
+{% block section %}user{% endblock %}
+{% block content %}
+    <h1>{{ user.name }}</h1>
+    <ul>
+        <li>First name: {{ user.first_name }}</li>
+        <li>Last name: {{ user.last_name }}</li>
+        <li>Email: {{ user.email }}</li>
+        {% if user.phone %}
+            <li>Phone: {{ user.phone }}</li>
+        {% endif %}
+    </ul>
+
+    {% if user.userID == me.userID or me.is_admin %}
+        <p><a href="/user/{{ user.username }}/edit">Edit</a></p>
+    {% endif %}
+{% endblock %}

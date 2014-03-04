@@ -1,0 +1,12 @@
+{% extends 'template.twig' %}
+{% block title %}Groups // Admin{% endblock %}
+{% block page %}admin groups{% endblock %}
+{% block section %}admin{% endblock %}
+{% block content %}
+    <h1>Groups</h1>
+    {% for group in groups %}
+        <li><a href="/admin/groups/{{ group.id }}/edit">{{ group.name }}</a></li>
+    {% endfor %}
+
+    <a class="action" href="/admin/groups/new">Create new</a>
+{% endblock %}
