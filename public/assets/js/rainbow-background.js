@@ -33,7 +33,7 @@
             linear_interpolate(previous_color_stop[2], next_color_stop[2], current_percent)
         ];
 
-        document.body.style.background = 'rgb('+new_color[0]+','+new_color[1]+','+new_color[2]+')';
+        document.html.style.background = 'rgb('+new_color[0]+','+new_color[1]+','+new_color[2]+')';
 
         // Increment how far we are
         current_ticks += update_ticks;
