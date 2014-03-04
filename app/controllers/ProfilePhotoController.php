@@ -6,7 +6,7 @@ class ProfilePhotoController extends BaseController {
         $user = Route::input('user');
         $size = Route::input('photosize');
 
-        $response = Response::make('', 307);
+        $response = Response::make('', 302);
         $response->header('Content-Type', 'image/jpeg');
         $response->header('Cache-control', 'public,max-age=300,no-transform');
         $response->header('Location', '/photo/'.$user->username.'_'.$size.'/'.$user->updated_at->timestamp.'.jpg');
