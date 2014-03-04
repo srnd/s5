@@ -9,6 +9,7 @@ class ProfilePhotoController extends BaseController {
         $response = Response::make('', 302);
         $response->header('Content-Type', 'image/jpeg');
         $response->header('Cache-control', 'public,max-age=300,no-transform');
+        $response->header('Expires', date('r', time() + 300));
         $response->header('Location', '/photo/'.$user->username.'_'.$size.'/'.$user->updated_at->timestamp.'.jpg');
 
         return $response;
