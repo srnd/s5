@@ -10,7 +10,9 @@ class ProfilePhotoController extends BaseController {
         //
         // This wouldn't be a problem if imagepng would return instead of echoing.
         header('Content-type: image/jpeg');
+        header('Cache-control: public,max-age=600,no-transform');
         $response->header('Content-Type', 'image/jpeg');
+        $response->header('Cache-control', 'public,max-age=600,no-transform');
 
         $user = Route::input('user');
         $size = Route::input('photosize');
