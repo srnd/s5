@@ -7,12 +7,12 @@ class Application extends Eloquent {
 
     public function admins()
     {
-        return $this->hasManyThrough('User', 'ApplicationAdmin', 'admin_userID', 'userID');
+        return $this->belongsToMany('User', 'applications_admins', 'applicationID', 'admin_userID');
     }
 
     public function users()
     {
-        return $this->hasManyThrough('User', 'ApplicationUser', 'userID', 'userID');
+        return $this->belongsToMany('User', 'applications_users', 'applicationID', 'userID');
     }
 
     public function getAuthIdentifier()
