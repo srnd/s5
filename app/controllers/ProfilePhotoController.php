@@ -1,6 +1,19 @@
 <?php
 
 class ProfilePhotoController extends BaseController {
+    public function redirect_photo()
+    {
+        $user = Route::input('user');
+        $size = Route::input('photosize');
+
+        return '/photo/'.$user->username.'_'.$size.'/'.$user->updated_at->timestamp.'.jpg';
+
+        $response = Response::make('', 307);
+        $response->header('Content-Type', 'image/jpeg');
+        $response->header('Cache-control', 'public,max-age=300,no-transform');
+        $response->header('Location', '/photo/'.$user->username.'_'.$size.'/'.$user->modified_at->getTimestamp().'.jpg');
+    }
+
     public function show_photo()
     {
         $response = Response::make('', 200);
@@ -10,9 +23,9 @@ class ProfilePhotoController extends BaseController {
         //
         // This wouldn't be a problem if imagepng would return instead of echoing.
         header('Content-type: image/jpeg');
-        header('Cache-control: public,max-age=600,no-transform');
+        header('Cache-control: public,max-age=604800,no-transform');
         $response->header('Content-Type', 'image/jpeg');
-        $response->header('Cache-control', 'public,max-age=600,no-transform');
+        $response->header('Cache-control', 'public,max-age=604800,no-transform');
 
         $user = Route::input('user');
         $size = Route::input('photosize');

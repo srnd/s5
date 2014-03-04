@@ -85,4 +85,5 @@ Route::controller('/about', 'AboutController');
 
 Route::pattern('photosize', '[0-9]{2,3}|1000');
 Route::pattern('imageformat', 'png|jpg|gif');
-Route::get('/photo/{user}_{photosize}.{imageformat}', 'ProfilePhotoController@show_photo');
+Route::get('/photo/{user}_{photosize}.{imageformat}', 'ProfilePhotoController@redirect_photo');
+Route::get('/photo/{user}_{photosize}/{flastmod}.{imageformat}', 'ProfilePhotoController@show_photo');
