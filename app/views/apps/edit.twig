@@ -31,4 +31,30 @@
 
         <input type="submit" value="Update" />
     </form>
+
+    {% if app.allow_internal %}
+        <h1>Webhooks</h1>
+        <ul>
+            {% for webhook in app.webhooks %}
+                <li>
+                    {{ webhook.name }}: {{ webhook.event }} ({{ webhook.url }})
+                    <form action="/apps/{{ app.token }}/deletewebhook/{{ webhook.id }}" method="post">
+                        <input type="submit" value="Delete" />
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h2>Create Webhook</h2>
+        <form action="/apps/{{ app.token }}/addwebhook" method="post">
+            <input type="text" name="name" placeholder="Name" required />
+            <select name="event">
+                {% for event in webhook_events %}
+                    <option value="{{ event }}">{{ event }}</option>
+                {% endfor %}
+            </select>
+            <input type="url" name="url" placeholder="URL" required />
+            <input type="submit" value="Create Hook" />
+        </form>
+    {% endif %}
 {% endblock %}

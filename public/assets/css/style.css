@@ -76,6 +76,7 @@ body {
       body section.content form input[type="password"],
       body section.content form input[type="tel"],
       body section.content form input[type="email"],
+      body section.content form input[type="url"],
       body section.content form textarea,
       body section.content form select {
         display: block;
@@ -95,6 +96,7 @@ body {
         body section.content form input[type="password"]:first-child,
         body section.content form input[type="tel"]:first-child,
         body section.content form input[type="email"]:first-child,
+        body section.content form input[type="url"]:first-child,
         body section.content form textarea:first-child,
         body section.content form select:first-child {
           border-top-width: 1px; }
@@ -102,6 +104,7 @@ body {
           body section.content form input[type="password"]:first-child:focus,
           body section.content form input[type="tel"]:first-child:focus,
           body section.content form input[type="email"]:first-child:focus,
+          body section.content form input[type="url"]:first-child:focus,
           body section.content form textarea:first-child:focus,
           body section.content form select:first-child:focus {
             margin-top: 0; }
@@ -109,6 +112,7 @@ body {
         body section.content form input[type="password"].available,
         body section.content form input[type="tel"].available,
         body section.content form input[type="email"].available,
+        body section.content form input[type="url"].available,
         body section.content form textarea.available,
         body section.content form select.available {
           border-color: #0f0;
@@ -117,6 +121,7 @@ body {
           body section.content form input[type="password"].available:not(:first-child),
           body section.content form input[type="tel"].available:not(:first-child),
           body section.content form input[type="email"].available:not(:first-child),
+          body section.content form input[type="url"].available:not(:first-child),
           body section.content form textarea.available:not(:first-child),
           body section.content form select.available:not(:first-child) {
             border-top-width: 1px;
@@ -125,6 +130,7 @@ body {
         body section.content form input[type="password"].taken,
         body section.content form input[type="tel"].taken,
         body section.content form input[type="email"].taken,
+        body section.content form input[type="url"].taken,
         body section.content form textarea.taken,
         body section.content form select.taken {
           border-color: #f00;
@@ -133,6 +139,7 @@ body {
           body section.content form input[type="password"].taken:not(:first-child),
           body section.content form input[type="tel"].taken:not(:first-child),
           body section.content form input[type="email"].taken:not(:first-child),
+          body section.content form input[type="url"].taken:not(:first-child),
           body section.content form textarea.taken:not(:first-child),
           body section.content form select.taken:not(:first-child) {
             border-top-width: 1px;
@@ -141,6 +148,7 @@ body {
         body section.content form input[type="password"]:focus,
         body section.content form input[type="tel"]:focus,
         body section.content form input[type="email"]:focus,
+        body section.content form input[type="url"]:focus,
         body section.content form textarea:focus,
         body section.content form select:focus {
           outline-width: 0;
@@ -151,6 +159,7 @@ body {
         body section.content form input[type="password"]::-webkit-input-placeholder,
         body section.content form input[type="tel"]::-webkit-input-placeholder,
         body section.content form input[type="email"]::-webkit-input-placeholder,
+        body section.content form input[type="url"]::-webkit-input-placeholder,
         body section.content form textarea::-webkit-input-placeholder,
         body section.content form select::-webkit-input-placeholder {
           color: rgba(255, 255, 255, 0.5);
@@ -159,6 +168,7 @@ body {
         body section.content form input[type="password"]:-moz-placeholder,
         body section.content form input[type="tel"]:-moz-placeholder,
         body section.content form input[type="email"]:-moz-placeholder,
+        body section.content form input[type="url"]:-moz-placeholder,
         body section.content form textarea:-moz-placeholder,
         body section.content form select:-moz-placeholder {
           color: rgba(255, 255, 255, 0.5);
@@ -167,6 +177,7 @@ body {
         body section.content form input[type="password"]::-moz-placeholder,
         body section.content form input[type="tel"]::-moz-placeholder,
         body section.content form input[type="email"]::-moz-placeholder,
+        body section.content form input[type="url"]::-moz-placeholder,
         body section.content form textarea::-moz-placeholder,
         body section.content form select::-moz-placeholder {
           color: rgba(255, 255, 255, 0.5);
@@ -175,6 +186,7 @@ body {
         body section.content form input[type="password"]:-ms-input-placeholder,
         body section.content form input[type="tel"]:-ms-input-placeholder,
         body section.content form input[type="email"]:-ms-input-placeholder,
+        body section.content form input[type="url"]:-ms-input-placeholder,
         body section.content form textarea:-ms-input-placeholder,
         body section.content form select:-ms-input-placeholder {
           color: rgba(255, 255, 255, 0.5);

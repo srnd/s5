@@ -63,6 +63,8 @@ class UserController extends BaseController {
         $user->country = Input::get('country');
         $user->save();
 
+        Event::fire('User.Update', [['user' => $user]]);
+
         return Redirect::to('/user/'.$user->username.'/edit');
     }
 
@@ -117,6 +119,8 @@ class UserController extends BaseController {
         $user->password = Hash::make(Input::get('new_password'));
         $user->save();
 
+        Event::fire('User.PasswordChange', [['user' => $user, 'password' => Input::get('new_password')]]);
+
         return Redirect::to('/user/'.$user->username.'/edit?pw');
     }
 
@@ -137,6 +141,7 @@ class UserController extends BaseController {
             App::abort(403);
         }
 
+        Event::fire('User.Delete', [['username' => $user->username]]);
         $user->delete();
         return Redirect::to('/admin/users');
     }

@@ -15,6 +15,11 @@ class Application extends Eloquent {
         return $this->belongsToMany('User', 'applications_users', 'applicationID', 'userID');
     }
 
+    public function webhooks()
+    {
+        return $this->hasMany('Webhook', 'applicationID', 'applicationID');
+    }
+
     public function getAuthIdentifier()
     {
         return $this->getKey();

@@ -31,6 +31,9 @@ class AdminUsersController extends BaseController {
 
         $user->restore();
 
+
+        Event::fire('User.Restore', [['user' => $user]]);
+
         return Redirect::to('/user/'.$user->username);
     }
 
@@ -56,6 +59,8 @@ class AdminUsersController extends BaseController {
         $user->email = Input::get('email');
         $user->password = Hash::make($password);
         $user->save();
+
+        Event::fire('User.Create', [['user' => $user]]);
 
         $email_data = ['user' => $user, 'link' => url('')];
 

@@ -33,7 +33,7 @@ class AppsController extends BaseController {
         $this->check_authorized();
 
         $app = Route::input('app');
-        return View::make('apps/edit', ['app' => $app]);
+        return View::make('apps/edit', ['app' => $app, 'webhook_events' => Webhook::$AllEvents]);
     }
 
     public function postEdit()
@@ -51,6 +51,50 @@ class AppsController extends BaseController {
         }
 
         $app->save();
+        return Redirect::to('/apps/'.$app->token);
+    }
+
+    public function postAddwebhook()
+    {
+        $this->check_authorized();
+
+        $app = Route::input('app');
+        if (!$app->allow_internal) {
+            App::abort(401);
+        }
+
+        if (!in_array(Input::get('event'), Webhook::$AllEvents)) {
+            App::abort(403);
+        }
+
+        $webhook = new Webhook();
+        $webhook->applicationID = $app->applicationID;
+        $webhook->name = Input::get('name');
+        $webhook->event = Input::get('event');
+        $webhook->url = Input::get('url');
+        $webhook->save();
+
+        return Redirect::to('/apps/'.$app->token);
+    }
+
+    public function postDeletewebhook()
+    {
+        $this->check_authorized();
+
+        $app = Route::input('app');
+        $hookID = Route::input('hookID');
+        if (!$app->allow_internal) {
+            App::abort(404);
+        }
+
+        $webhook = Webhook::where('id', '=', $hookID)->first();
+
+        if ($webhook->application->applicationID !== $app->applicationID) {
+            App::abort(404);
+        }
+
+        $webhook->delete();
+
         return Redirect::to('/apps/'.$app->token);
     }
 

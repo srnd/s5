@@ -54,6 +54,8 @@ Route::group([ 'before' => 'check_user' ], function() {
     Route::post('/apps/new', 'AppsController@postNew');
     Route::get('/apps/{app}', 'AppsController@getEdit');
     Route::post('/apps/{app}', 'AppsController@postEdit');
+    Route::post('/apps/{app}/addwebhook', 'AppsController@postAddwebhook');
+    Route::post('/apps/{app}/deletewebhook/{hookID}', 'AppsController@postDeletewebhook');
 
     Route::controller('/oauth/{app}', 'OauthController');
 });
