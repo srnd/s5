@@ -2,7 +2,7 @@
 
 Route::filter('check_user', function() {
     if (!Auth::check()) {
-        $after = '/'.Request::path();
+        $after = '/'.Request::server('REQUEST_URI');
         return Redirect::to('/login?after='.urlencode($after), 307);
     }
 });
@@ -10,7 +10,7 @@ Route::filter('check_user', function() {
 Route::filter('check_admin', function() {
     if (!Auth::check() || !Auth::user()->is_admin) {
         Auth::logout();
-        $after = '/'.Request::path();
+        $after = '/'.Request::server('REQUEST_URI');
         return Redirect::to('/login?after='.urlencode($after), 307);
     }
 });

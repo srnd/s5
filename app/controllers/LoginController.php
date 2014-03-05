@@ -71,7 +71,11 @@ class LoginController extends BaseController {
     {
         $redirect = Input::get('after');
         if ($redirect) {
-            if (substr($redirect,0,2) === '//' || strpos($redirect, '://') !== false) {
+            if (substr($redirect,0,2) === '//') {
+                $redirect = '/'.ltrim($redirect, '/');
+            }
+
+            if (strpos($redirect, '://') !== false) {
                 return Redirect::to('/');
             } else {
                 return Redirect::to($redirect);
