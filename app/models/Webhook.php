@@ -22,10 +22,9 @@ class Webhook extends Eloquent {
     {
         $opts = ['http' => ['method'  => 'POST']];
 
-        if (count($data) > 0) {
-            $opts['http']['header'] = 'Content-type: application/x-www-form-urlencoded';
-            $opts['http']['content'] = http_build_query($data);
-        }
+        $data['secret'] = $this->application->secret;
+        $opts['http']['header'] = 'Content-type: application/x-www-form-urlencoded';
+        $opts['http']['content'] = http_build_query($data);
 
         $context  = stream_context_create($opts);
         file_get_contents($this->url, false, $context);
