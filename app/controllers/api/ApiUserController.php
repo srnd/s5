@@ -33,9 +33,19 @@ class ApiUserController extends BaseController {
         return $users_promise;
     }
 
+    public function getIndex()
+    {
+        $user = User::whereRaw('username = ?', [Input::get('username')])->first();
+        return $this->getPromisedUser($user, false);
+    }
+
     public function getMe()
     {
-        $user = ApplicationUser::ApiUser();
+        return $this->getPromisedUser(ApplicationUser::ApiUser(), ApplicationUser::IsAuthorized('extended'));
+    }
+
+    public function getPromisedUser($user, $extended = false)
+    {
         $promise = [
             'id' => (int)$user->userID,
             'username' => $user->username,
@@ -54,7 +64,7 @@ class ApiUserController extends BaseController {
             ];
         }
 
-        if (ApplicationUser::IsAuthorized('extended')) {
+        if ($extended) {
             $promise['phone'] = $user->phone;
             $promise['address_line_1'] = $user->address_line_1;
             $promise['address_line_2'] = $user->address_line_2;
