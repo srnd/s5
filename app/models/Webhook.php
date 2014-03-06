@@ -23,6 +23,8 @@ class Webhook extends Eloquent {
         $opts = ['http' => ['method'  => 'POST']];
 
         $data['secret'] = $this->application->secret;
+        $data['event'] = $this->event;
+
         $opts['http']['header'] = 'Content-type: application/x-www-form-urlencoded';
         $opts['http']['content'] = http_build_query($data);
 
