@@ -29,7 +29,9 @@ class Webhook extends Eloquent {
         $opts['http']['content'] = http_build_query($data);
 
         $context  = stream_context_create($opts);
-        file_get_contents($this->url, false, $context);
+        try {
+            @file_get_contents($this->url, false, $context);
+        } catch (\Exception $ex) {}
     }
 
     public static function ExecuteAll($event, $data)
