@@ -10,6 +10,7 @@ class Webhook extends Eloquent {
         'User.Update',
         'User.Delete',
         'User.Restore',
+        'User.Rename',
         'User.PasswordChange'
     ];
 

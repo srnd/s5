@@ -27,6 +27,8 @@ class UserController extends BaseController {
         $this->check_authorized();
         $user = Route::input('user');
 
+        $oldUsername = $user->username;
+
         if (!Input::get('first_name') || !Input::get('last_name') || !Input::get('email')) {
             return View::make('user/edit', ['user' => $user, 'error' => 'required']);
         }
@@ -62,6 +64,13 @@ class UserController extends BaseController {
         $user->postal_code = Input::get('postal_code');
         $user->country = Input::get('country');
         $user->save();
+
+        echo $oldUsername;
+        echo $user->username;
+
+        if ($oldUsername !== $user->username) {
+            Event::fire('User.Rename', [['old_username' => $oldUsername, 'new_username' => $user->username]]);
+        }
 
         Event::fire('User.Update', [['user' => $user]]);
 
