@@ -16,14 +16,31 @@ body {
     padding-bottom: 1rem; }
     body header h1 {
       float: left; }
+      @media only screen and (max-width: 599px) {
+        body header h1 {
+          float: none;
+          text-align: center;
+          margin-bottom: 0; } }
       body header h1 a {
+        font-size: 1.5rem;
         text-decoration: none; }
+        body header h1 a span {
+          vertical-align: super;
+          font-size: 1rem;
+          font-weight: lighter; }
     body header nav {
       float: right;
       position: relative;
       top: 1rem; }
+      @media only screen and (max-width: 599px) {
+        body header nav {
+          float: none;
+          text-align: center; } }
       body header nav ul {
         padding: 0; }
+        @media only screen and (max-width: 599px) {
+          body header nav ul {
+            margin-top: 0; } }
         body header nav ul li {
           display: inline-block; }
           body header nav ul li a {
@@ -34,6 +51,11 @@ body {
     max-width: 600px;
     margin: 3rem auto 1rem;
     padding-top: 0.5rem; }
+    @media only screen and (max-width: 599px) {
+      body section.content {
+        margin: 1rem 0;
+        padding-left: 1rem;
+        padding-right: 1rem; } }
     body section.content h1 {
       width: 100%;
       font-weight: lighter; }
@@ -206,7 +228,7 @@ body {
       body section.content p:last-child {
         margin-bottom: 4rem; }
       body section.content p, body section.content p a, body section.content p a:hover {
-        color: rgba(255, 255, 255, 0.5); }
+        color: rgba(255, 255, 255, 0.6); }
 
 body.about {
   background-color: #0ac0c2;

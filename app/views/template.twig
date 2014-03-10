@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>{% if block('title') %}{{ block('title') }} // {% endif %}s5</title>
+    <title>{% if block('title') %}{{ block('title') }} // {% endif %}StudentRND s5</title>
     <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body
@@ -16,7 +16,7 @@
 <script type="text/javascript" data-cfasync="false">try{Typekit.load();}catch(e){}</script>
 <script type="text/javascript" src="/assets/js/rainbow-background.js" data-cfasync="false"></script>
 <header>
-    <h1><a href="/me">s5</a></h1>
+    <h1><a href="{% if me %}/me{% else %}/{% endif %}">StudentRND <span>s5</span></a></h1>
     <nav>
         <ul>
             {% if me %}

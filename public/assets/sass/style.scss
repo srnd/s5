@@ -1,5 +1,9 @@
 $max-width: 600px;
 
+@mixin thin() {
+    @media only screen and (max-width: $max-width - 1) { @content; }
+}
+
 body {
     * {
         box-sizing: border-box;
@@ -27,8 +31,21 @@ body {
         h1 {
             float: left;
 
+            @include thin {
+                float: none;
+                text-align: center;
+                margin-bottom: 0;
+            }
+
             a {
+                font-size: 1.5rem;
                 text-decoration: none;
+
+                span {
+                    vertical-align: super;
+                    font-size: 1rem;
+                    font-weight: lighter;
+                }
             }
         }
 
@@ -37,8 +54,17 @@ body {
             position: relative;
             top: 1rem;
 
+            @include thin {
+                float: none;
+                text-align: center;
+            }
+
             ul {
                 padding: 0;
+
+                @include thin {
+                    margin-top: 0;
+                }
 
                 li {
                     display: inline-block;
@@ -57,6 +83,12 @@ body {
         max-width: $max-width;
         margin: 3rem auto 1rem;
         padding-top: 0.5rem;
+
+        @include thin {
+            margin: 1rem 0;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
 
         h1 {
             width: 100%;
@@ -224,7 +256,7 @@ body {
             }
 
             &, a, a:hover {
-                color: rgba(255, 255, 255, 0.5);
+                color: rgba(255, 255, 255, 0.6);
             }
         }
     }

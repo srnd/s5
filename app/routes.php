@@ -43,8 +43,8 @@ Route::bind('group', function($value, $route) {
 });
 
 Route::group([ 'before' => 'check_user' ], function() {
-    Route::any('/me', function() {
-        return Redirect::to('/user/'.Auth::user()->username, 307);
+    Route::any('/me/{page?}', function($page = '') {
+        return Redirect::to('/user/'.Auth::user()->username.'/'.$page, 307);
     });
 
     Route::controller('/user/{user}', 'UserController');
@@ -79,11 +79,10 @@ Route::group(['prefix' => 'api'], function() {
 
 Route::get('/', function()
 {
-    return Redirect::to('/me');
+    return View::make('index');
 });
 
 Route::controller('/login', 'LoginController');
-Route::controller('/about', 'AboutController');
 
 Route::pattern('photosize', '[0-9]{2,3}|1000');
 Route::pattern('imageformat', 'png|jpg|gif');
