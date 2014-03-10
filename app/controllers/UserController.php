@@ -133,6 +133,29 @@ class UserController extends BaseController {
         return Redirect::to('/user/'.$user->username.'/edit?pw');
     }
 
+    public function getImpersonate()
+    {
+        if (!Auth::user()->is_admin) {
+            App::abort(401);
+        }
+
+        $user = Route::input('user');
+
+        return View::make('user/impersonate', ['user' => $user]);
+    }
+
+    public function postImpersonate()
+    {
+        if (!Auth::user()->is_admin) {
+            App::abort(401);
+        }
+
+        $user = Route::input('user');
+        Auth::logout();
+        Auth::login($user);
+        return Redirect::to('/');
+    }
+
     public function getDelete()
     {
         $user = Route::input('user');

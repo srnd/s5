@@ -67,6 +67,7 @@
        {% if user.username == me.username %}your{% else %}{{ user.first_name }}'s{% endif %} password?</a></p>
     {% if me.is_admin and user.username != me.username %}
         <p><a href="/user/{{ user.username }}/delete">Trying to delete {{ user.first_name }}?</a></p>
+        <p><a href="/user/{{ user.username }}/impersonate">Want to impersonate {{ user.first_name }}?</a></p>
     {% endif %}
     <p><a href="/user/{{ user.username }}">Cancel editing</a></p>
 {% endblock %}

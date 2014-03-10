@@ -1,0 +1,15 @@
+{% extends 'template.twig' %}
+{% block title %}Impersonate {{ user.first_name }}?{% endblock %}
+{% block page %}impersonate user{% endblock %}
+{% block section %}user{% endblock %}
+{% block content %}
+    <h1>
+        Impersonate {{ user.name }} ({{ user.username }})?
+    </h1>
+    <p>This will log you out and log in as {{ user.name }} instead. Please confirm you are authorized to do this.</p>
+    <form method="post">
+        <input type="submit" value="Impersonate {{ user.username }}" />
+    </form>
+
+    <p><a href="/user/{{ user.username }}/edit">Cancel</a></p>
+{% endblock %}

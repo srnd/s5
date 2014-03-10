@@ -40,7 +40,7 @@ class LoginController extends BaseController {
         }
 
         if ($password_matches) {
-            Auth::login($user);
+            Auth::login($user, true);
             return $this->auto_redirect();
         } else {
             return View::make('login/index', ['invalid_login' => true]);
