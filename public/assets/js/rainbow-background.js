@@ -9,7 +9,7 @@
     var ticks_between_stops = 20000;
 
     var current_stop_position = Math.floor(Math.random()*color_stops.length);
-    var current_ticks = 0;
+    var current_ticks = Math.floor(Math.random()*ticks_between_stops);
     var on_tick = function()
     {
         // Get information on where we're going and where we've been
@@ -33,7 +33,8 @@
             linear_interpolate(previous_color_stop[2], next_color_stop[2], current_percent)
         ];
 
-        document.html.style.background = 'rgb('+new_color[0]+','+new_color[1]+','+new_color[2]+')';
+        document.body.parentNode.style.background = 'rgb('+new_color[0]+','+new_color[1]+','+new_color[2]+')';
+        document.body.style.background = 'rgb('+new_color[0]+','+new_color[1]+','+new_color[2]+')';
 
         // Increment how far we are
         current_ticks += update_ticks;
@@ -50,6 +51,8 @@
         }
     }
 
-    on_tick();
-    setInterval(on_tick, update_ticks);
+    window.addEventListener('load', function(){
+        on_tick();
+        setInterval(on_tick, update_ticks);
+    });
 })();
