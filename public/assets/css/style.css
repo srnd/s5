@@ -130,40 +130,64 @@ body {
           body section.content form textarea:first-child:focus,
           body section.content form select:first-child:focus {
             margin-top: 0; }
-        body section.content form input[type="text"].available,
+        body section.content form input[type="text"].available, body section.content form input[type="text"].unused,
         body section.content form input[type="password"].available,
+        body section.content form input[type="password"].unused,
         body section.content form input[type="tel"].available,
+        body section.content form input[type="tel"].unused,
         body section.content form input[type="email"].available,
+        body section.content form input[type="email"].unused,
         body section.content form input[type="url"].available,
+        body section.content form input[type="url"].unused,
         body section.content form textarea.available,
-        body section.content form select.available {
-          border-color: #0f0;
+        body section.content form textarea.unused,
+        body section.content form select.available,
+        body section.content form select.unused {
+          border-color: #0f0 !important;
           z-index: 100; }
-          body section.content form input[type="text"].available:not(:first-child),
+          body section.content form input[type="text"].available:not(:first-child), body section.content form input[type="text"].unused:not(:first-child),
           body section.content form input[type="password"].available:not(:first-child),
+          body section.content form input[type="password"].unused:not(:first-child),
           body section.content form input[type="tel"].available:not(:first-child),
+          body section.content form input[type="tel"].unused:not(:first-child),
           body section.content form input[type="email"].available:not(:first-child),
+          body section.content form input[type="email"].unused:not(:first-child),
           body section.content form input[type="url"].available:not(:first-child),
+          body section.content form input[type="url"].unused:not(:first-child),
           body section.content form textarea.available:not(:first-child),
-          body section.content form select.available:not(:first-child) {
+          body section.content form textarea.unused:not(:first-child),
+          body section.content form select.available:not(:first-child),
+          body section.content form select.unused:not(:first-child) {
             border-top-width: 1px;
             margin-top: -1px; }
-        body section.content form input[type="text"].taken,
+        body section.content form input[type="text"].taken, body section.content form input[type="text"].used,
         body section.content form input[type="password"].taken,
+        body section.content form input[type="password"].used,
         body section.content form input[type="tel"].taken,
+        body section.content form input[type="tel"].used,
         body section.content form input[type="email"].taken,
+        body section.content form input[type="email"].used,
         body section.content form input[type="url"].taken,
+        body section.content form input[type="url"].used,
         body section.content form textarea.taken,
-        body section.content form select.taken {
-          border-color: #f00;
+        body section.content form textarea.used,
+        body section.content form select.taken,
+        body section.content form select.used {
+          border-color: #f00 !important;
           z-index: 100; }
-          body section.content form input[type="text"].taken:not(:first-child),
+          body section.content form input[type="text"].taken:not(:first-child), body section.content form input[type="text"].used:not(:first-child),
           body section.content form input[type="password"].taken:not(:first-child),
+          body section.content form input[type="password"].used:not(:first-child),
           body section.content form input[type="tel"].taken:not(:first-child),
+          body section.content form input[type="tel"].used:not(:first-child),
           body section.content form input[type="email"].taken:not(:first-child),
+          body section.content form input[type="email"].used:not(:first-child),
           body section.content form input[type="url"].taken:not(:first-child),
+          body section.content form input[type="url"].used:not(:first-child),
           body section.content form textarea.taken:not(:first-child),
-          body section.content form select.taken:not(:first-child) {
+          body section.content form textarea.used:not(:first-child),
+          body section.content form select.taken:not(:first-child),
+          body section.content form select.used:not(:first-child) {
             border-top-width: 1px;
             margin-top: -1px; }
         body section.content form input[type="text"]:focus,

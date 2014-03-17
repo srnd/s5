@@ -7,6 +7,12 @@ Route::filter('check_user', function() {
     }
 });
 
+Route::filter('check_not_user', function(){
+    if (Auth::check()) {
+        return Redirect::to('/', 307);
+    }
+});
+
 Route::filter('check_admin', function() {
     if (!Auth::check() || !Auth::user()->is_admin) {
         Auth::logout();
@@ -42,6 +48,24 @@ Route::bind('group', function($value, $route) {
     return $group;
 });
 
+Route::bind('invite', function($value, $route) {
+    $invite = Invite::where('id', $value)->first();
+    if ($invite === null) {
+        App::abort(404);
+    }
+
+    return $invite;
+});
+
+Route::bind('invite_code', function($value, $route) {
+    $invite = Invite::where('code', $value)->first();
+    if ($invite === null) {
+        App::abort(404);
+    }
+
+    return $invite;
+});
+
 Route::group([ 'before' => 'check_user' ], function() {
     Route::any('/me/{page?}', function($page = '') {
         return Redirect::to('/user/'.Auth::user()->username.'/'.$page, 307);
@@ -62,6 +86,7 @@ Route::group([ 'before' => 'check_user' ], function() {
 
 Route::group(['prefix' => 'admin', 'before' => 'check_admin'], function() {
     Route::controller('/users', 'AdminUsersController');
+
     Route::post('/groups/{group}/addmember', 'AdminGroupsController@postAddmember');
     Route::post('/groups/{group}/removemember', 'AdminGroupsController@postRemovemember');
     Route::get('/groups/{group}/edit', 'AdminGroupsController@getEdit');
@@ -69,6 +94,15 @@ Route::group(['prefix' => 'admin', 'before' => 'check_admin'], function() {
     Route::get('/groups/{group}/delete', 'AdminGroupsController@getDelete');
     Route::post('/groups/{group}/delete', 'AdminGroupsController@postDelete');
     Route::controller('/groups', 'AdminGroupsController');
+
+    Route::post('/invites/{invite}/addgroup', 'AdminInvitesController@postAddgroup');
+    Route::post('/invites/{invite}/removegroup', 'AdminInvitesController@postRemovegroup');
+    Route::get('/invites/{invite}/edit', 'AdminInvitesController@getEdit');
+    Route::post('/invites/{invite}/edit', 'AdminInvitesController@postEdit');
+    Route::get('/invites/{invite}/delete', 'AdminInvitesController@getDelete');
+    Route::post('/invites/{invite}/delete', 'AdminInvitesController@postDelete');
+    Route::controller('/invites', 'AdminInvitesController');
+
     Route::controller('/', 'AdminController');
 });
 
@@ -83,6 +117,14 @@ Route::get('/', function()
 });
 
 Route::controller('/login', 'LoginController');
+Route::get('/invite/{invite_code}', [
+    'before' => 'check_not_user',
+    'uses' => 'InviteController@getIndex'
+]);
+Route::post('/invite/{invite_code}', [
+    'before' => 'check_not_user',
+    'uses' => 'InviteController@postIndex'
+]);
 
 Route::pattern('photosize', '[0-9]{2,3}|1000');
 Route::pattern('imageformat', 'png|jpg|gif');

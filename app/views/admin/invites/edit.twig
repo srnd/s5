@@ -1,0 +1,34 @@
+{% extends 'template.twig' %}
+{% block title %}Editing {{ invite.name }} // Admin{% endblock %}
+{% block page %}admin invite edit{% endblock %}
+{% block section %}admin{% endblock %}
+{% block content %}
+    <h1>Editing {{ invite.code }}</h1>
+    <form method="post" autocomplete="off">
+        <input type="text" name="only_for_description" id="only_for_description" placeholder="Only For... (e.g. staff members)" required value="{{ invite.only_for_description }}" autocomplete="off" />
+        <input type="submit" value="Update" />
+    </form>
+    <p><a href="/admin/invites/{{ invite.id }}/delete">Want to delete this invite?</a></p>
+    <p><a href="/invite/{{ invite.code }}">Invite link</a></p>
+
+    <h1>Groups</h1>
+    <ul>
+        {% for group in invite.groups %}
+            <li>
+                {{ group.name }}
+                <form action="/admin/invites/{{ invite.id }}/removegroup" method="post">
+                    <input type="hidden" name="groupID" value="{{ group.id }}" />
+                    <input type="submit" value="remove" />
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <form action="/admin/invites/{{ invite.id }}/addgroup" method="post">
+        <select name="groupID">
+            {% for group in all_unadded_groups %}
+                <option value="{{ group.id }}">{{ group.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Add" />
+    </form>
+{% endblock %}

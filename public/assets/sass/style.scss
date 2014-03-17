@@ -180,8 +180,8 @@ body {
                     }
                 }
 
-                &.available {
-                    border-color: #0f0;
+                &.available, &.unused {
+                    border-color: #0f0 !important;
                     z-index: 100;
 
                     &:not(:first-child) {
@@ -190,8 +190,8 @@ body {
                     }
                 }
 
-                &.taken {
-                    border-color: #f00;
+                &.taken, &.used {
+                    border-color: #f00 !important;
                     z-index: 100;
 
                     &:not(:first-child) {

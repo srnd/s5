@@ -12,6 +12,17 @@ class ApiUserController extends BaseController {
         }
     }
 
+    public function anyRegistered()
+    {
+        $user = User::whereRaw('email = ?', [Input::get('email')])->first();
+        $exists = $user !== null;
+        if ($exists) {
+            return ['exists' => true, 'id' => $user->userID];
+        } else {
+            return ['exists' => false];
+        }
+    }
+
     public function anySuggest()
     {
         $search = '%'.Input::get('search').'%';

@@ -1,0 +1,12 @@
+{% extends 'template.twig' %}
+{% block title %}Invites // Admin{% endblock %}
+{% block page %}admin invites{% endblock %}
+{% block section %}admin{% endblock %}
+{% block content %}
+    <h1>Invites</h1>
+    {% for invite in invites %}
+        <li><a href="/admin/invites/{{ invite.id }}/edit">{{ invite.code }} ({{ invite.only_for_description }})</a></li>
+    {% endfor %}
+
+    <a class="action" href="/admin/invites/new">Create new</a>
+{% endblock %}

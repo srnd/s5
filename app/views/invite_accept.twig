@@ -1,13 +1,24 @@
 {% extends 'template.twig' %}
-{% block title %}New User // Admin{% endblock %}
-{% block page %}admin users new{% endblock %}
-{% block section %}admin{% endblock %}
+{% block title %}Welcome to s5{% endblock %}
+{% block page %}invite{% endblock %}
+{% block section %}invite{% endblock %}
 {% block content %}
-    <h1>Create New User</h1>
-    <form method="post" autocomplete="off">
-        <p>This will create a new user and send them a welcome email. (In general, users should be created by a
-           third-party service using the API rather than directly.)</p>
+    {% if error %}
+        <section class="error">
+            {{ error }}
+        </section>
+    {% endif %}
 
+    <h1>Welcome to s5</h1>
+    <p>This form will create an s5 account for you. s5 syncs your information between StudentRND events (such as CodeDay
+       and Labs) and services (like our online community). Volunteers can use s5 to log into collaboration apps and
+       email.</p>
+
+    <section class="warning">
+        This form is only for use by <strong>{{ invite.only_for_description }}</strong>.
+    </section>
+
+    <form method="post" autocomplete="off">
         <h2>Basic Details</h2>
         <section>
             <input type="text" name="first_name" id="first_name" placeholder="First Name" required value="" autocomplete="off" />
@@ -18,12 +29,9 @@
         <h2>Login Details</h2>
         <section>
             <input type="text" name="username" id="username" placeholder="Username" required value="" autocomplete="off" />
-            <select name="password_type" id="password_type">
-                <option value="generate">Generate a password</option>
-                <option value="set">Set a password</option>
-            </select>
-            <input type="password" style="display:none" name="password" id="password" placeholder="Password" value="" autocomplete="off" />
-            <input type="submit" value="Create" />
+            <input type="password" name="password" id="password" placeholder="Password" value="" autocomplete="off" />
+            <input type="password" name="password_confirm" id="password_confirm" placeholder="Password (confirm)" value="" autocomplete="off" />
+            <input type="submit" value="Engage!" />
         </section>
     </form>
 {% endblock %}
@@ -44,7 +52,7 @@
                 {
                     if (!this.username_has_been_updated) {
                         this.field_username.value =   this.field_name_first.value.toLowerCase()
-                                                    + this.field_name_last.value.toLowerCase();
+                            + this.field_name_last.value.toLowerCase();
 
                         this.checkUsername();
                     }
@@ -99,24 +107,11 @@
                     }
                 },
 
-                showHidePassword: function()
-                {
-                    if (this.field_password_type.value == 'set') {
-                        this.field_password.style.display = 'block';
-                        this.field_password.value = '';
-                        this.field_password.required = true;
-                    } else {
-                        this.field_password.style.display = 'none';
-                        this.field_password.value = '';
-                        this.field_password.required = false;
-                    }
-                },
-
                 usernameOnChange: function()
                 {
                     if (   this.field_username.value == ''
                         || this.field_username.value == (  this.field_name_first.value.toLowerCase()
-                                                         + this.field_name_last.value.toLowerCase())) {
+                        + this.field_name_last.value.toLowerCase())) {
                         this.username_has_been_updated = false;
                         this.suggestUsername();
                     } else {

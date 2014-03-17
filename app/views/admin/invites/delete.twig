@@ -1,9 +1,9 @@
 {% extends 'template.twig' %}
-{% block title %}Deleting {{ group.name }} // Admin{% endblock %}
-{% block page %}admin groups delete{% endblock %}
+{% block title %}Deleting {{ invite.code }} // Admin{% endblock %}
+{% block page %}admin invites delete{% endblock %}
 {% block section %}admin{% endblock %}
 {% block content %}
-    <h1>Delete {{ group.name }}?</h1>
+    <h1>Delete {{ invite.code }}?</h1>
     <p>There is no undo.</p>
     <form method="post" autocomplete="off">
         <input type="submit" value="Delete it!" />
