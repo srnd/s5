@@ -17,7 +17,7 @@
 
         <h2>Login Details</h2>
         <section>
-            <input type="text" name="username" id="username" placeholder="Username" required value="" autocomplete="off" />
+            <input type="text" name="username" id="username" placeholder="Username" required value="" pattern="[a-zA-Z0-9_]{1,50}" autocomplete="off" />
             <select name="password_type" id="password_type">
                 <option value="generate">Generate a password</option>
                 <option value="set">Set a password</option>

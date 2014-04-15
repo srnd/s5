@@ -23,12 +23,12 @@
         <section>
             <input type="text" name="first_name" id="first_name" placeholder="First Name" required value="" autocomplete="off" />
             <input type="text" name="last_name" id="last_name" placeholder="Last Name" required value="" autocomplete="off" />
-            <input type="email" name="email" id="email" placeholder="Email" required value="" autocomplete="off" />
+            <input type="email" name="email" id="email" placeholder="Personal Email" required value="" autocomplete="off" />
         </section>
 
         <h2>Login Details</h2>
         <section>
-            <input type="text" name="username" id="username" placeholder="Username" required value="" autocomplete="off" />
+            <input type="text" name="username" id="username" placeholder="Username" required value="" pattern="[a-zA-Z0-9_]{1,50}" autocomplete="off" />
             <input type="password" name="password" id="password" placeholder="Password" value="" autocomplete="off" />
             <input type="password" name="password_confirm" id="password_confirm" placeholder="Password (confirm)" value="" autocomplete="off" />
             <input type="submit" value="Engage!" />
