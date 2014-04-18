@@ -45,7 +45,7 @@
     </section>
     <form method="post">
         <section>
-            <input type="text" name="username" id="username" placeholder="Username" required pattern="[a-zA-Z0-9_]{1,50}" {% if not me.is_admin %}readonly{% endif %} value="{{ user.username }}" />
+            <input type="text" name="username" id="username" placeholder="Username" required pattern="[a-zA-Z0-9\._]{1,50}" {% if not me.is_admin %}readonly{% endif %} value="{{ user.username }}" />
             <input type="text" name="first_name" id="first_name" placeholder="First Name" required value="{{ user.first_name }}" />
             <input type="text" name="last_name" id="last_name" placeholder="Last Name" required value="{{ user.last_name }}" />
             <input type="email" name="email" id="email" placeholder="Email" required value="{{ user.email }}" />
