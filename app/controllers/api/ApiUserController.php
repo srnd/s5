@@ -46,8 +46,16 @@ class ApiUserController extends BaseController {
 
     public function getIndex()
     {
+        $app = null;
+        $extended = false;
+        if (\Input::get('secret')) {
+            $app = Application::where('secret', '=', \Input::get('secret'))->first();
+        }
+        if (isset($app) && $app->whitelist_extended) {
+            $extended = true;
+        }
         $user = User::whereRaw('username = ?', [Input::get('username')])->first();
-        return $this->getPromisedUser($user, false);
+        return $this->getPromisedUser($user, $extended);
     }
 
     public function getMe()
