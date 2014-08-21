@@ -59,8 +59,10 @@
             <input type="text" name="city" id="city" placeholder="City" value="{{ user.city }}" /><input type="text" name="state" id="state" placeholder="State" value="{{ user.state }}" /><input type="text" name="postal_code" id="postal_code" placeholder="Postal Code" value="{{ user.postal_code }}" />
             <input type="text" name="country" id="country" placeholder="Country" value="{{ user.country }}" />
         </section>
-        <input type="checkbox" name="is_admin" id="is_admin" value="1" {% if user.is_admin %}checked{% endif %} />
-        <label for="is_admin">Is admin</label>
+        {% if me.is_admin %}
+            <input type="checkbox" name="is_admin" id="is_admin" value="1" {% if user.is_admin %}checked{% endif %} />
+            <label for="is_admin">Is admin</label>
+        {% endif %}
         <input type="submit" value="Update" />
     </form>
     <p><a href="/user/{{ user.username }}/password">Want to change
