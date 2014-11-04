@@ -49,7 +49,7 @@
             <input type="text" name="first_name" id="first_name" placeholder="First Name" required value="{{ user.first_name }}" />
             <input type="text" name="last_name" id="last_name" placeholder="Last Name" required value="{{ user.last_name }}" />
             <input type="email" name="email" id="email" placeholder="Email" required value="{{ user.email }}" />
-            <input type="tel" pattern="(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]‌​)\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)([2-9]1[02-9]‌​|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})" name="phone" id="phone" placeholder="Phone Number" value="{{ user.phone }}" />
+            <input type="tel" pattern="\d{10,11}" name="phone" id="phone" placeholder="Phone Number (no dashes)" value="{{ user.phone }}" />
         </section>
 
         <h2>Address</h2>
