@@ -26,7 +26,7 @@
                     <td>{{ app.token }}</td>
                     <td>{% if app.whitelist_login %}x{% endif %}</td>
                     <td>{% if app.whitelist_extended %}x{% endif %}</td>
-                    <td>{% if app.whitelist_internal %}x{% endif %}</td>
+                    <td>{% if app.allow_internal %}x{% endif %}</td>
                     <td>{{ app.users|length }}</td>
                     <td>
                         <ul style="margin: 0;">

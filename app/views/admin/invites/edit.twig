@@ -6,6 +6,8 @@
     <h1>Editing {{ invite.code }}</h1>
     <form method="post" autocomplete="off">
         <input type="text" name="only_for_description" id="only_for_description" placeholder="Only For... (e.g. staff members)" required value="{{ invite.only_for_description }}" autocomplete="off" />
+        <input type="checkbox" name="gapps" id="gapps" value="1" {% if invite.gapps %}checked{% endif %} />
+        <label for="gapps">Create GApps*</label>
         <input type="submit" value="Update" />
     </form>
     <p><a href="/admin/invites/{{ invite.id }}/delete">Want to delete this invite?</a></p>
@@ -31,4 +33,8 @@
         </select>
         <input type="submit" value="Add" />
     </form>
+    <p>
+      * When checked, this invite will create a Google Apps account (which includes a @studentrnd.org email) for each user
+      that registers with it.
+    </p>
 {% endblock %}

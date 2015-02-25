@@ -6,6 +6,12 @@
     <h1>Create New Invite</h1>
     <form method="post" autocomplete="off">
         <input type="text" name="only_for_description" id="only_for_description" placeholder="Only For... (e.g. staff members)" required value="" autocomplete="off" />
+        <input type="checkbox" name="gapps" id="gapps" value="1" />
+        <label for="gapps">Create GApps*</label>
         <input type="submit" value="Create" />
     </form>
+    <p>
+      * When checked, this invite will create a Google Apps account (which includes a @studentrnd.org email) for each user
+      that registers with it.
+    </p>
 {% endblock %}
