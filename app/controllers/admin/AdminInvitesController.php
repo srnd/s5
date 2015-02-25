@@ -16,7 +16,7 @@ class AdminInvitesController extends BaseController {
         $invite = new Invite();
         $invite->code = str_random(32);
         $invite->only_for_description = Input::get('only_for_description');
-        $invite->gapps = Input::get('gapps');
+        $invite->gapps = (bool)Input::get('gapps');
         $invite->save();
 
         return Redirect::to('/admin/invites/'.$invite->id.'/edit');
@@ -36,7 +36,7 @@ class AdminInvitesController extends BaseController {
     {
         $invite = Route::input('invite');
         $invite->only_for_description = Input::get('only_for_description');
-        $invite->gapps = Input::get('gapps');
+        $invite->gapps = (bool)Input::get('gapps');
         $invite->save();
 
         return Redirect::to('/admin/invites/'.$invite->id.'/edit');
