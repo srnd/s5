@@ -4,7 +4,7 @@ class DatabaseSeeder extends Seeder {
 
     public function run()
     {
-        if (!Models\User::first()) {
+        if (!User::first()) {
             $user = new User();
             $user->username = 'admin';
             $user->first_name = 'Admin';

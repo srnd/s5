@@ -56,8 +56,8 @@ class CreateGroups extends Migration {
      */
     public function down()
     {
-        Schema::drop('groups');
         Schema::drop('users_groups');
+        Schema::drop('groups');
     }
 
 }
