@@ -52,8 +52,8 @@ class AddInvites extends Migration {
      */
     public function down()
     {
-        Schema::drop('invites');
         Schema::drop('invites_groups');
+        Schema::drop('invites');
     }
 
 }
