@@ -13,20 +13,19 @@ class User extends Eloquent implements UserInterface {
     {
         if (\Hash::check($password, $this->password)) {
             $this->setPassword($password);
+            $this->save();
             return true;
         } else {
             $salt = substr(base64_decode($this->password),-4);
-            $expected = base64_encode(sha1( $password.$salt, TRUE ). $salt);
-            echo $salt."<br />";
-            echo $expected;echo "<br />".$this->password;
+            $expected = base64_encode(sha1( $password.$salt, true ). $salt);
             return $this->password === $expected;
         }
     }
 
     public function setPassword($password)
     {
-        $salt = str_random(4);
-        $this->password = base64_encode(sha1( $password.$salt, TRUE ). $salt);
+        $salt = substr(sha1(str_random(), true), -4);
+        $this->password = base64_encode(sha1( $password.$salt, true). $salt);
         return $this;
     }
 
