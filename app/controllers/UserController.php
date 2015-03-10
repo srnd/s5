@@ -121,11 +121,11 @@ class UserController extends BaseController {
         }
 
         if ($user->userID == Auth::user()->userID
-            && !Hash::check(Input::get('old_password'), $user->password)) {
+            && !$user->checkPassword(Input::get('old_password'))) {
             return View::make('user/password', ['user' => $user, 'error' => 'oldpassword']);
         }
 
-        $user->password = Hash::make(Input::get('new_password'));
+        $user->setPassword(Input::get('new_password'));
         $user->save();
 
         Event::fire('User.PasswordChange', [['user' => $user, 'password' => Input::get('new_password')]]);

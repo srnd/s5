@@ -24,7 +24,7 @@ class InviteController extends BaseController {
         $user->first_name = Input::get('first_name');
         $user->last_name = Input::get('last_name');
         $user->email = Input::get('email');
-        $user->password = Hash::make(Input::get('password'));
+        $user->setPassword(Input::get('password'));
         $user->save();
 
         foreach ($invite->groups as $group) {

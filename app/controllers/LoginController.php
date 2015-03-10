@@ -29,11 +29,11 @@ class LoginController extends BaseController {
         // Check if password matches using current or old system
         $password_matches = false;
         if ($user !== null) {
-            if (Hash::check(Input::get('password'), $user->password)) {
+            if ($user->checkPassword(Input::get('password'))) {
                 $password_matches = true;
             } else if ($this->check_old_password_formats(Input::get('password'), $user)) {
                 // Update the password
-                $user->password = Hash::make(Input::get('password'));
+                $user->setPassword(Input::get('password'));
                 $user->save();
                 $password_matches = true;
             }

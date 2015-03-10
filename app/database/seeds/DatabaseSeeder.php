@@ -10,7 +10,7 @@ class DatabaseSeeder extends Seeder {
             $user->first_name = 'Admin';
             $user->last_name = 'Admin';
             $user->email = 'root@localhost';
-            $user->password = Hash::make('password');
+            $user->setPassword('password');
             $user->is_admin = true;
             $user->save();
         }
