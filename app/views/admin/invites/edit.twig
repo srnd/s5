@@ -9,6 +9,7 @@
         <input type="checkbox" name="gapps" id="gapps" value="1" {% if invite.gapps %}checked{% endif %} />
         <label for="gapps">Create GApps*</label>
         <input type="submit" value="Update" />
+        {{ csrf|raw }}
     </form>
     <p><a href="/admin/invites/{{ invite.id }}/delete">Want to delete this invite?</a></p>
     <p><a href="/invite/{{ invite.code }}">Invite link</a></p>
@@ -19,6 +20,7 @@
             <li>
                 {{ group.name }}
                 <form action="/admin/invites/{{ invite.id }}/removegroup" method="post">
+                    {{ csrf|raw }}
                     <input type="hidden" name="groupID" value="{{ group.id }}" />
                     <input type="submit" value="remove" />
                 </form>
@@ -26,6 +28,7 @@
         {% endfor %}
     </ul>
     <form action="/admin/invites/{{ invite.id }}/addgroup" method="post">
+        {{ csrf|raw }}
         <select name="groupID">
             {% for group in all_unadded_groups %}
                 <option value="{{ group.id }}">{{ group.name }}</option>

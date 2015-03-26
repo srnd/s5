@@ -8,6 +8,7 @@
         <input type="text" name="name" id="name" placeholder="Name" required value="{{ group.name }}" autocomplete="off" />
         <textarea name="description" id="description" placeholder="Description" required>{{ group.description }}</textarea>
         <input type="submit" value="Update" />
+        {{ csrf|raw }}
     </form>
 
     <h1>Users</h1>
@@ -16,6 +17,7 @@
             <li>
                 {{ user.name }}
                 <form action="/admin/groups/{{ group.id }}/removemember" method="post">
+                    {{ csrf|raw }}
                     <input type="hidden" name="userID" value="{{ user.userID }}" />
                     <input type="submit" value="remove" />
                 </form>
@@ -25,5 +27,6 @@
     <form action="/admin/groups/{{ group.id }}/addmember" method="post">
         <input type="text" name="username" placeholder="username" value="" />
         <input type="submit" value="Add" />
+        {{ csrf|raw }}
     </form>
 {% endblock %}

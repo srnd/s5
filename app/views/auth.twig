@@ -16,6 +16,7 @@
     <blockquote>{{ app.description }}</blockquote>
 
     <form method="post">
+        {{ csrf|raw }}
         <input type="submit" value="Authorize" />
     </form>
 {% endblock %}

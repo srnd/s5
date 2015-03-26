@@ -29,6 +29,24 @@ class User extends Eloquent implements UserInterface {
         return $this;
     }
 
+    public function validate2fa($response)
+    {
+        if (count($this->second_factors) === 0) return true; // No second factor
+
+        // Check all second factors to see if one of them matched the response
+        foreach ($this->second_factors as $secondFactor) {
+            if ($secondFactor->verify($response)) return true;
+        }
+
+        // No match
+        return false;
+    }
+
+    public function secondFactors()
+    {
+        return $this->hasMany('SecondFactor', 'userID', 'userID');
+    }
+
     public function getNameAttribute()
     {
         return sprintf('%s %s', $this->first_name, $this->last_name);

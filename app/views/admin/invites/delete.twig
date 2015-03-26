@@ -6,6 +6,7 @@
     <h1>Delete {{ invite.code }}?</h1>
     <p>There is no undo.</p>
     <form method="post" autocomplete="off">
+        {{ csrf|raw }}
         <input type="submit" value="Delete it!" />
     </form>
 {% endblock %}

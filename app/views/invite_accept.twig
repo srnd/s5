@@ -19,6 +19,7 @@
     </section>
 
     <form method="post" autocomplete="off">
+        {{ csrf|raw }}
         <h2>Basic Details</h2>
         <section>
             <input type="text" name="first_name" id="first_name" placeholder="First Name" required value="" autocomplete="off" />

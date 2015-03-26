@@ -8,7 +8,9 @@
 		"laravel/framework": "4.1.*",
         "rcrowe/twigbridge": "0.5.*",
         "bogardo/mailgun": "dev-master",
-        "loic-sharma/profiler": "1.1.*"
+        "loic-sharma/profiler": "1.1.*",
+		"spomky-labs/otphp": "~4.0.0",
+		"enygma/yubikey": "~3.1"
     },
 	"autoload": {
 		"classmap": [

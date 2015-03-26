@@ -102,6 +102,112 @@ class UserController extends BaseController {
         return json_encode(['success' => true]);
     }
 
+    public function getSecondFactors()
+    {
+        $this->check_authorized();
+
+        $user = Route::input('user');
+        return View::make('user/2fa/index', ['user' => $user]);
+    }
+
+    public function getNewSecondFactorTotp()
+    {
+        $this->check_authorized();
+
+        $user = Route::input('user');
+        $secret = strtoupper(TOTP::getRandomSecret());
+        $totp = (new TOTP())
+            ->setSecret($secret)
+            ->setUser($user);
+        return View::make('user/2fa/new_totp', ['user' => $user, 'totp' => $totp]);
+    }
+
+    public function postNewSecondFactorTotp()
+    {
+        $this->check_authorized();
+
+        $user = Route::input('user');
+        $secret = Input::get('secret');
+        $totp = (new TOTP())
+            ->setSecret($secret)
+            ->setUser($user);
+
+        if (intval(\Input::get('code')) === $totp->now()) {
+            $secondFactor = new SecondFactor();
+            $secondFactor->userID = $user->userID;
+            $secondFactor->type = 'totp';
+            $secondFactor->private = $secret;
+            $secondFactor->save();
+
+            return Redirect::to('/user/'.$user->username.'/2fa');
+        } else {
+            return View::make('user/2fa/new_totp', [
+                'user' => $user,
+                'totp' => $totp,
+                'invalid_code' => true
+            ]);
+        }
+    }
+
+    public function getNewSecondFactorYubikey()
+    {
+        $this->check_authorized();
+
+        $user = Route::input('user');
+        return View::make('user/2fa/new_yubikey', ['user' => $user]);
+    }
+
+    public function postNewSecondFactorYubikey()
+    {
+        $this->check_authorized();
+
+        $user = Route::input('user');
+        $code = Input::get('code');
+        $yubikey = substr($code, 0, 12);
+
+        $yubico = new \Yubikey\Validate(\Config::get('yubico.secret_key'), \Config::get('yubico.client_id'));
+        if ($yubico->check($code)) {
+            $secondFactor = new SecondFactor();
+            $secondFactor->userID = $user->userID;
+            $secondFactor->type = 'yubikey';
+            $secondFactor->private = $yubikey;
+            $secondFactor->save();
+
+            return Redirect::to('/user/'.$user->username.'/2fa');
+        } else {
+            return View::make('user/2fa/new_yubikey', ['user' => $user, 'invalid_code' => true]);
+        }
+    }
+
+    public function getDeleteSecondFactor()
+    {
+        $this->check_authorized();
+
+        $user = Route::input('user');
+        $secondFactor = Route::input('second_factor');
+        if ($secondFactor->userID !== $user->userID) App::abort(401);
+
+        return View::make('user/2fa/delete', ['user' => $user, 'second_factor' => $secondFactor]);
+    }
+
+    public function postDeleteSecondFactor()
+    {
+        $this->check_authorized();
+
+        $user = Route::input('user');
+        $secondFactor = Route::input('second_factor');
+        if ($secondFactor->userID !== $user->userID) App::abort(401);
+
+        // Is the user an admin, trying to delete their own device, and is it the last remaning one?
+        if (count($user->second_factors) === 1 && $user->is_admin && $user->userID == Auth::user()->userID) {
+            return View::make('user/2fa/delete', ['user' => $user, 'second_factor' => $secondFactor,
+                'error_admin_no2fa' => true]);
+        }
+
+        $secondFactor->delete();
+        return Redirect::to('/user/'.$user->username.'/2fa');
+    }
+
     public function getPassword()
     {
         $this->check_authorized();

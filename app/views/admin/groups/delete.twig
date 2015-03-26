@@ -7,5 +7,6 @@
     <p>There is no undo.</p>
     <form method="post" autocomplete="off">
         <input type="submit" value="Delete it!" />
+        {{ csrf|raw }}
     </form>
 {% endblock %}

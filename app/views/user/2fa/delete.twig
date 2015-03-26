@@ -1,0 +1,21 @@
+{% extends 'template.twig' %}
+{% block title %}Delete {{ second_factor.name }}?{% endblock %}
+{% block page %}user 2fa delete{% endblock %}
+{% block section %}user{% endblock %}
+{% block content %}
+    {% if error_admin_no2fa %}
+        <section class="error">
+            You cannot delete your last second factor device; admins must have two-factor login active.
+        </section>
+    {% endif %}
+    <h1>
+        Delete {{ second_factor.name }} created on {{ second_factor.created_at.timestamp|date('F j, Y') }}?
+    </h1>
+    <p>Are you sure you want to delete this second factor?</p>
+    <form method="post">
+        {{ csrf|raw }}
+        <input type="submit" value="Delete {{ second_factor.name }}" />
+    </form>
+
+    <p><a href="/user/{{ user.username }}/2fa">Cancel</a></p>
+{% endblock %}

@@ -7,6 +7,7 @@
     <p>This will enable the user's account. The user will immediately be able to login with the previously chosen
        password.</p>
     <form method="post">
+        {{ csrf|raw }}
         <input type="submit" value="Restore {{ user.username }}" />
     </form>
 {% endblock %}

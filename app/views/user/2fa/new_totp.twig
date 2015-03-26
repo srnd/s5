@@ -1,0 +1,40 @@
+{% extends 'template.twig' %}
+{% block title %}Adding Google Authenticator{% endblock %}
+{% block page %}user 2fa add totp{% endblock %}
+{% block section %}user{% endblock %}
+{% block content %}
+    <h1>New Google Authenticator Factor</h1>
+    {% if invalid_code %}
+        <section class="error">
+            The code was invalid.
+        </section>
+    {% endif %}
+    <p>The Google Authenticator app supports generating security codes using your mobile phone.</p>
+    <p>To add Google authenticator:</p>
+    <ol>
+        <li>Install the Google Authenticator app on your
+            <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8" target="_blank">iPhone,</a>
+            <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" target="_blank">Android</a>,
+            or <a href="http://www.windowsphone.com/en-us/store/app/authenticator/021dd79f-0598-e011-986b-78e7d1fa76f8" target="_blank">Windows Phone</a>.
+        </li>
+        <li>Open the app and touch the "+" button.</li>
+        <li>
+            Tap on "Scan Barcode" and scan the following code:
+            <div class="authenticator-code" style="display: block; text-align: center;">
+                <img src="{{ totp.GetQrUri }}" alt="QR Code"/>
+            </div>
+            <strong>OR</strong> type the following code: <a href="{{ totp.getProvisioningUri }}">{{ totp.secret }}</a>.
+        </li>
+        <li>Type the generated code below and hit the "Add Second Factor" button to confirm.</li>
+    </ol>
+    <form method="post">
+        {{ csrf|raw }}
+        <input type="hidden" name="secret" id="secret" value="{{ totp.getSecret }}"/>
+        <section>
+            <input type="text" name="code" id="code" placeholder="Code from Google Authenticator" required autocomplete="off" value="" />
+        </section>
+        <input type="submit" value="Add Second Factor" />
+    </form>
+
+    <p><a href="/user/{{ user.username }}/2fa">Cancel</a></p>
+{% endblock %}

@@ -5,6 +5,7 @@
 {% block content %}
     <h1>Create New User</h1>
     <form method="post" autocomplete="off">
+        {{ csrf|raw }}
         <p>This will create a new user and send them a welcome email. (In general, users should be created by a
            third-party service using the API rather than directly.)</p>
 

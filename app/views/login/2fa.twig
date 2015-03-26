@@ -1,0 +1,22 @@
+{% extends 'template.twig' %}
+{% block title %}Login{% endblock %}
+{% block page %}login 2fa{% endblock %}
+{% block section %}login{% endblock %}
+{% block content %}
+    <h1>Two-Factor Login Required</h1>
+    <p>Please enter the code from your Google Authenticator app or YubiKey to continue with login.</p>
+    <form method="post">
+        <input type="hidden" name="username" value="{{ username }}"/>
+        <input type="hidden" name="password" value="{{ password }}"/>
+        <section>
+            <input type="text" name="code" id="code" placeholder="Second Factor" required />
+        </section>
+        <input type="submit" value="Login" />
+        {{ csrf|raw }}
+    </form>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript">
+        document.getElementById('code').focus();
+    </script>
+{% endblock %}

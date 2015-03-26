@@ -1,0 +1,38 @@
+{% extends 'template.twig' %}
+{% block title %}Adding YubiKey Factor{% endblock %}
+{% block page %}user 2fa add yubikey{% endblock %}
+{% block section %}user{% endblock %}
+{% block content %}
+    <h1>New YubiKey Factor</h1>
+    {% if invalid_code %}
+        <section class="error">
+            The YubiKey could not be validated. Ensure your YubiKey is in Yubico OTP mode, and that the password has
+            been uploaded to Yubico's servers. (You can find instructions on doing this using the YubiKey
+            Personalization Tool.)
+        </section>
+    {% endif %}
+    <p>YubiKeys are physical devices which emulate a physical keyboard to generate security codes.</p>
+    <p>To add a YubiKey:</p>
+    <ol>
+        <li>Purchase a
+            <a href="http://www.amazon.com/gp/product/B00LM8U5X6" target="_blank">YubiKey</a>,
+            <a href="http://www.amazon.com/gp/product/B00NHSHI8E" target="_blank">YubiKey Nano</a>,
+            <a href="http://www.amazon.com/gp/product/B00LX8KZZ8" target="_blank">YubiKey NEO</a>, or
+            <a href="http://www.amazon.com/gp/product/B00O8ST7MM" target="_blank">YubiKey NEO-n</a>.
+            (Blue U2F YubiKeys are <strong>not</strong> supported.)
+        </li>
+        <li>Configure your key in Yubico OTP mode, and upload your key to Yubico's servers. (This is configured by
+            default when you purchase a YubiKey, and only necessary if you've reconfigured it since.)</li>
+        <li>Select the text box below and touch the button on your YubiKey to generate an OTP.</li>
+        <li>Hit "Add Second Factor" to confirm the addition of your YubiKey.</li>
+    </ol>
+    <form method="post">
+        {{ csrf|raw }}
+        <section>
+            <input type="text" name="code" id="code" placeholder="Code from YubiKey" required autocomplete="off" value="" />
+        </section>
+        <input type="submit" value="Add Second Factor" />
+    </form>
+
+    <p><a href="/user/{{ user.username }}/2fa">Cancel</a></p>
+{% endblock %}

@@ -3,6 +3,9 @@ Event::listen('twigbridge.twig', function($twig) {
     if (Auth::check()) {
         $twig->addGlobal('me', Auth::user());
     }
+    $csrf = csrf_token();
+    $twig->addGlobal('csrf_token', $csrf);
+    $twig->addGlobal('csrf', '<input type="hidden" name="_token" value="'.$csrf.'" />');
 });
 
 Event::listen('User.*', function($obj) {

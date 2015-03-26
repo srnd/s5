@@ -40,10 +40,12 @@
     <section class="photo">
         <img id="previewphoto" src="/photo/{{ user.username }}_128.jpg" />
         <form method="post">
+            {{ csrf|raw }}
             <input type="file" name="photo" id="uploadphoto" style="display:none" />
         </form>
     </section>
     <form method="post">
+        {{ csrf|raw }}
         <section>
             <input type="text" name="username" id="username" placeholder="Username" required pattern="[a-zA-Z0-9\._]{1,50}" {% if not me.is_admin %}readonly{% endif %} value="{{ user.username }}" />
             <input type="text" name="first_name" id="first_name" placeholder="First Name" required value="{{ user.first_name }}" />
@@ -65,6 +67,8 @@
         {% endif %}
         <input type="submit" value="Update" />
     </form>
+    <p><a href="/user/{{ user.username }}/2fa">Want to
+            {% if user.second_factors|length > 0 %}manage{% else %}add{% endif %} two-factor authentication?</a></p>
     <p><a href="/user/{{ user.username }}/password">Want to change
        {% if user.username == me.username %}your{% else %}{{ user.first_name }}'s{% endif %} password?</a></p>
     {% if me.is_admin and user.username != me.username %}

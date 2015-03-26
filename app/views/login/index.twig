@@ -19,6 +19,7 @@
             <input type="password" name="password" id="password" placeholder="Password" required />
         </section>
         <input type="submit" value="Login" />
+        {{ csrf|raw }}
     </form>
     {# <p>Forgot your <a href="/login/forgot">username</a> or <a href="/login/forgot">password</a>?</p> #}
     <p><a href="/about/accounts">Don't have an account?</a></p>

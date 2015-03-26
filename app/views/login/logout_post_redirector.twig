@@ -5,6 +5,7 @@
 <h1>Logging you out...</h1>
 <form id="logoutform" method="post">
     <input type="submit" value="Click here to log out" />
+    {{ csrf|raw }}
 </form>
 <script type="text/javascript">
     if (window.top === window.self) {

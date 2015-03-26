@@ -6,6 +6,7 @@
     <h1>Create New Group</h1>
     <p>Please use groups for things people are, and not things they've attended.</p>
     <form method="post" autocomplete="off">
+        {{ csrf|raw }}
         <input type="text" name="name" id="name" placeholder="Name" required value="" autocomplete="off" />
         <textarea name="description" id="description" placeholder="Description" required></textarea>
         <input type="submit" value="Create" />

@@ -16,6 +16,13 @@
 <script type="text/javascript" data-cfasync="false" src="//use.typekit.net/mvs6fyv.js"></script>
 <script type="text/javascript" data-cfasync="false">try{Typekit.load();}catch(e){}</script>
 <script type="text/javascript" src="/assets/js/rainbow-background.js" data-cfasync="false"></script>
+{% if me and me.is_admin and me.second_factors|length == 0 %}
+    <div class="warning" style="position: absolute;top:0;left:0;right:0;padding:1rem;background-color:red;color:white;text-align:center;">
+        Warning: You are an admin, but do not have two-factor authentication configured.
+        <a href="/user/{{ me.username }}/2fa">Please add a second factor for login!</a>
+    </div>
+    <style>body > header { margin-top: 3rem; }</style>
+{% endif %}
 <header>
     <h1><a href="{% if me %}/me{% else %}/{% endif %}">StudentRND <span>s5</span></a></h1>
     <nav>

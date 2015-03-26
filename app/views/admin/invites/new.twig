@@ -9,6 +9,7 @@
         <input type="checkbox" name="gapps" id="gapps" value="1" />
         <label for="gapps">Create GApps*</label>
         <input type="submit" value="Create" />
+        {{ csrf|raw }}
     </form>
     <p>
       * When checked, this invite will create a Google Apps account (which includes a @studentrnd.org email) for each user

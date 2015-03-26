@@ -8,5 +8,6 @@
         <input type="text" name="name" id="name" placeholder="Name" required value="" autocomplete="off" />
         <textarea name="description" id="description" placeholder="Description" required></textarea>
         <input type="submit" value="Create" />
+        {{ csrf|raw }}
     </form>
 {% endblock %}

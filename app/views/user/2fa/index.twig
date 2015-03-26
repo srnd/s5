@@ -1,0 +1,33 @@
+{% extends 'template.twig' %}
+{% block title %}Changing Password{% endblock %}
+{% block page %}user 2fa index{% endblock %}
+{% block section %}user{% endblock %}
+{% block content %}
+    <h1>Two-Factor Login Credentials</h1>
+
+    {% if user.second_factors|length > 0 %}
+        <table>
+            <thead>
+                <tr>
+                    <td>Type</td>
+                    <td>Created At</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for factor in user.second_factors %}
+                    <tr>
+                        <td>{{ factor.name }}</td>
+                        <td>{{ factor.created_at.timestamp|date('F j, Y') }}</td>
+                        <td><a href="/user/{{ user.username }}/2fa/delete/{{ factor.id }}">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You do not currently have a second factor authentication device.</p>
+    {% endif %}
+
+    <p><a href="/user/{{ user.username }}/2fa/new/yubikey">New Yubikey</a></p>
+    <p><a href="/user/{{ user.username }}/2fa/new/totp">New Google Authenticator</a></p>
+{% endblock %}

@@ -26,6 +26,23 @@ class LoginController extends BaseController {
 
         $user = User::where('username', '=', Input::get('username'))->first();
 
+        if (count($user->second_factors) === 0) {
+            return $this->doLogin();
+        } elseif (\Input::get('code')) {
+            if ($user->validate2fa(\Input::get('code'))) {
+                return $this->doLogin();
+            } else {
+                return View::make('login/index', ['invalid_login' => true]);
+            }
+        } else {
+            return View::make('login/2fa', ['username' => \Input::get('username'), 'password' => \Input::get('password')]);
+        }
+    }
+
+    private function doLogin()
+    {
+        $user = User::where('username', '=', Input::get('username'))->first();
+
         // Check if password matches using current or old system
         $password_matches = false;
         if ($user !== null) {
@@ -40,7 +57,7 @@ class LoginController extends BaseController {
         }
 
         if ($password_matches) {
-            Auth::login($user, true);
+            Auth::login($user, !$user->is_admin);
             return $this->auto_redirect();
         } else {
             return View::make('login/index', ['invalid_login' => true]);

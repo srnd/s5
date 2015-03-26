@@ -8,6 +8,7 @@
     </h1>
     <p>This will log you out and log in as {{ user.name }} instead. Please confirm you are authorized to do this.</p>
     <form method="post">
+        {{ csrf|raw }}
         <input type="submit" value="Impersonate {{ user.username }}" />
     </form>
 

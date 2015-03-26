@@ -66,10 +66,29 @@ Route::bind('invite_code', function($value, $route) {
     return $invite;
 });
 
+Route::bind('second_factor', function($value, $route) {
+    $factor = SecondFactor::where('id', $value)->first();
+    if ($factor === null) {
+        App::abort(404);
+    }
+
+    return $factor;
+});
+
+Route::when('*', 'csrf', ['post']);
+
 Route::group([ 'before' => 'check_user' ], function() {
     Route::any('/me/{page?}', function($page = '') {
         return Redirect::to('/user/'.Auth::user()->username.'/'.$page, 307);
     });
+
+    Route::get('/user/{user}/2fa', 'UserController@getSecondFactors');
+    Route::get('/user/{user}/2fa/new/totp', 'UserController@getNewSecondFactorTotp');
+    Route::post('/user/{user}/2fa/new/totp', 'UserController@postNewSecondFactorTotp');
+    Route::get('/user/{user}/2fa/new/yubikey', 'UserController@getNewSecondFactorYubikey');
+    Route::post('/user/{user}/2fa/new/yubikey', 'UserController@postNewSecondFactorYubikey');
+    Route::get('/user/{user}/2fa/delete/{second_factor}', 'UserController@getDeleteSecondFactor');
+    Route::post('/user/{user}/2fa/delete/{second_factor}', 'UserController@postDeleteSecondFactor');
 
     Route::controller('/user/{user}', 'UserController');
 
