@@ -34,10 +34,8 @@ class InviteController extends BaseController {
             $user_group->save();
         }
 
-        if($invite->gapps){
-            Event::fire('User.Create', [['user' => $user]]);
-            Event::fire('User.PasswordChange', [['user' => $user, 'password' => Input::get('password')]]);
-        }
+        Event::fire('User.Create', [['user' => $user]]);
+        Event::fire('User.PasswordChange', [['user' => $user, 'password' => Input::get('password')]]);
 
         Auth::login($user, true);
         return Redirect::to('/');
