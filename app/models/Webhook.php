@@ -29,9 +29,13 @@ class Webhook extends Eloquent {
         $opts['http']['header'] = 'Content-type: application/x-www-form-urlencoded';
         $opts['http']['content'] = http_build_query($data);
 
-        $context  = stream_context_create($opts);
+        $url = $this->url;
         try {
-            @file_get_contents($this->url, false, $context);
+            Queue::push(function ($job) use ($opts, $url) {
+                $context  = stream_context_create($opts);
+                @file_get_contents($url, false, $context);
+                $job->delete();
+            });
         } catch (\Exception $ex) {}
     }
 
