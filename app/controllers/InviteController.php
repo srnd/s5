@@ -4,7 +4,18 @@ class InviteController extends BaseController {
     public function getIndex()
     {
         $invite = Route::input('invite_code');
-        return View::make('invite_accept', ['invite' => $invite]);
+        if (Auth::check()) {
+            foreach ($invite->groups as $group) {
+                $user_group = new UserGroup();
+                $user_group->userID = Auth::user()->userID;
+                $user_group->groupID = $group->id;
+                $user_group->save();
+            }
+
+            return Redirect::to('/');
+        } else {
+            return View::make('invite_accept', ['invite' => $invite]);
+        }
     }
 
     public function postIndex()
