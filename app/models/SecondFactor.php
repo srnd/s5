@@ -18,16 +18,20 @@ class SecondFactor extends Eloquent {
 
         switch ($this->type) {
             case "totp":
-                return (new TOTP)
-                    ->setUser($this->user)
-                    ->setSecret($this->private)
-                    ->now() === intval($response);
+                $times = [time() - (new TOTP)->getInterval(), time(), time() + (new TOTP)->getInterval()];
+                foreach ($times as $time) {
+                    if ((new TOTP)
+                        ->setUser($this->user)
+                        ->setSecret($this->private)
+                        ->at($time) === intval($response)) return true;
+                }
+                return false;
 
             case "yubikey":
-                // Make sure it's the correct Yubikey
+                // Make sure it's the correct YubiKey
                 if (substr($response, 0, 12) !== $this->private) return false;
 
-                // Validate with yubico
+                // Validate with Yubico
                 $yubico = new \Yubikey\Validate(\Config::get('yubico.secret_key'), \Config::get('yubico.client_id'));
                 return $yubico->check($response);
 
