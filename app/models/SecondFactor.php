@@ -33,7 +33,7 @@ class SecondFactor extends Eloquent {
 
                 // Validate with Yubico
                 $yubico = new \Yubikey\Validate(\Config::get('yubico.secret_key'), \Config::get('yubico.client_id'));
-                return $yubico->check($response);
+                return $yubico->check($response)->success();
 
             default:
                 return false;
