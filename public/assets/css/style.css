@@ -68,13 +68,13 @@ body {
         background: rgba(255, 0, 0, 0.5); }
       body section.content section.error.success, body section.content section.success.success {
         background: rgba(0, 255, 0, 0.5); }
-    body section.content form {
+    body section.content form:not(.login) {
       width: 100%;
       margin: 1rem 0;
       text-align: right; }
-      body section.content form h1, body section.content form h2, body section.content form h3, body section.content form h4, body section.content form h5, body section.content form h6, body section.content form p, body section.content form ul {
+      body section.content form:not(.login) h1, body section.content form:not(.login) h2, body section.content form:not(.login) h3, body section.content form:not(.login) h4, body section.content form:not(.login) h5, body section.content form:not(.login) h6, body section.content form:not(.login) p, body section.content form:not(.login) ul {
         text-align: left; }
-      body section.content form input[type="submit"] {
+      body section.content form:not(.login) input[type="submit"] {
         display: inline-block;
         border: 1px solid rgba(255, 255, 255, 0.5);
         background-color: transparent;
@@ -83,24 +83,24 @@ body {
         border-top-width: 0;
         font-size: 1rem;
         padding: 1rem 2rem; }
-        body section.content form input[type="submit"]:first-child {
+        body section.content form:not(.login) input[type="submit"]:first-child {
           border-top-width: 1px; }
-        body section.content form input[type="submit"]:hover {
+        body section.content form:not(.login) input[type="submit"]:hover {
           margin-top: -1px;
           border-top-width: 1px;
           border-color: #fff; }
-        body section.content form input[type="submit"]:focus, body section.content form input[type="submit"]:active {
+        body section.content form:not(.login) input[type="submit"]:focus, body section.content form:not(.login) input[type="submit"]:active {
           outline-width: 0;
           background: rgba(255, 255, 255, 0.5); }
-      body section.content form textarea {
+      body section.content form:not(.login) textarea {
         height: 10rem; }
-      body section.content form input[type="text"],
-      body section.content form input[type="password"],
-      body section.content form input[type="tel"],
-      body section.content form input[type="email"],
-      body section.content form input[type="url"],
-      body section.content form textarea,
-      body section.content form select {
+      body section.content form:not(.login) input[type="text"],
+      body section.content form:not(.login) input[type="password"],
+      body section.content form:not(.login) input[type="tel"],
+      body section.content form:not(.login) input[type="email"],
+      body section.content form:not(.login) input[type="url"],
+      body section.content form:not(.login) textarea,
+      body section.content form:not(.login) select {
         display: block;
         border: 1px solid rgba(255, 255, 255, 0.5);
         background-color: transparent;
@@ -114,127 +114,127 @@ body {
         font-size: 1rem;
         padding: 1rem 2rem;
         width: 100%; }
-        body section.content form input[type="text"]:first-child,
-        body section.content form input[type="password"]:first-child,
-        body section.content form input[type="tel"]:first-child,
-        body section.content form input[type="email"]:first-child,
-        body section.content form input[type="url"]:first-child,
-        body section.content form textarea:first-child,
-        body section.content form select:first-child {
+        body section.content form:not(.login) input[type="text"]:first-child,
+        body section.content form:not(.login) input[type="password"]:first-child,
+        body section.content form:not(.login) input[type="tel"]:first-child,
+        body section.content form:not(.login) input[type="email"]:first-child,
+        body section.content form:not(.login) input[type="url"]:first-child,
+        body section.content form:not(.login) textarea:first-child,
+        body section.content form:not(.login) select:first-child {
           border-top-width: 1px; }
-          body section.content form input[type="text"]:first-child:focus,
-          body section.content form input[type="password"]:first-child:focus,
-          body section.content form input[type="tel"]:first-child:focus,
-          body section.content form input[type="email"]:first-child:focus,
-          body section.content form input[type="url"]:first-child:focus,
-          body section.content form textarea:first-child:focus,
-          body section.content form select:first-child:focus {
+          body section.content form:not(.login) input[type="text"]:first-child:focus,
+          body section.content form:not(.login) input[type="password"]:first-child:focus,
+          body section.content form:not(.login) input[type="tel"]:first-child:focus,
+          body section.content form:not(.login) input[type="email"]:first-child:focus,
+          body section.content form:not(.login) input[type="url"]:first-child:focus,
+          body section.content form:not(.login) textarea:first-child:focus,
+          body section.content form:not(.login) select:first-child:focus {
             margin-top: 0; }
-        body section.content form input[type="text"].available, body section.content form input[type="text"].unused,
-        body section.content form input[type="password"].available,
-        body section.content form input[type="password"].unused,
-        body section.content form input[type="tel"].available,
-        body section.content form input[type="tel"].unused,
-        body section.content form input[type="email"].available,
-        body section.content form input[type="email"].unused,
-        body section.content form input[type="url"].available,
-        body section.content form input[type="url"].unused,
-        body section.content form textarea.available,
-        body section.content form textarea.unused,
-        body section.content form select.available,
-        body section.content form select.unused {
+        body section.content form:not(.login) input[type="text"].available, body section.content form:not(.login) input[type="text"].unused,
+        body section.content form:not(.login) input[type="password"].available,
+        body section.content form:not(.login) input[type="password"].unused,
+        body section.content form:not(.login) input[type="tel"].available,
+        body section.content form:not(.login) input[type="tel"].unused,
+        body section.content form:not(.login) input[type="email"].available,
+        body section.content form:not(.login) input[type="email"].unused,
+        body section.content form:not(.login) input[type="url"].available,
+        body section.content form:not(.login) input[type="url"].unused,
+        body section.content form:not(.login) textarea.available,
+        body section.content form:not(.login) textarea.unused,
+        body section.content form:not(.login) select.available,
+        body section.content form:not(.login) select.unused {
           border-color: #0f0 !important;
           z-index: 100; }
-          body section.content form input[type="text"].available:not(:first-child), body section.content form input[type="text"].unused:not(:first-child),
-          body section.content form input[type="password"].available:not(:first-child),
-          body section.content form input[type="password"].unused:not(:first-child),
-          body section.content form input[type="tel"].available:not(:first-child),
-          body section.content form input[type="tel"].unused:not(:first-child),
-          body section.content form input[type="email"].available:not(:first-child),
-          body section.content form input[type="email"].unused:not(:first-child),
-          body section.content form input[type="url"].available:not(:first-child),
-          body section.content form input[type="url"].unused:not(:first-child),
-          body section.content form textarea.available:not(:first-child),
-          body section.content form textarea.unused:not(:first-child),
-          body section.content form select.available:not(:first-child),
-          body section.content form select.unused:not(:first-child) {
+          body section.content form:not(.login) input[type="text"].available:not(:first-child), body section.content form:not(.login) input[type="text"].unused:not(:first-child),
+          body section.content form:not(.login) input[type="password"].available:not(:first-child),
+          body section.content form:not(.login) input[type="password"].unused:not(:first-child),
+          body section.content form:not(.login) input[type="tel"].available:not(:first-child),
+          body section.content form:not(.login) input[type="tel"].unused:not(:first-child),
+          body section.content form:not(.login) input[type="email"].available:not(:first-child),
+          body section.content form:not(.login) input[type="email"].unused:not(:first-child),
+          body section.content form:not(.login) input[type="url"].available:not(:first-child),
+          body section.content form:not(.login) input[type="url"].unused:not(:first-child),
+          body section.content form:not(.login) textarea.available:not(:first-child),
+          body section.content form:not(.login) textarea.unused:not(:first-child),
+          body section.content form:not(.login) select.available:not(:first-child),
+          body section.content form:not(.login) select.unused:not(:first-child) {
             border-top-width: 1px;
             margin-top: -1px; }
-        body section.content form input[type="text"].taken, body section.content form input[type="text"].used,
-        body section.content form input[type="password"].taken,
-        body section.content form input[type="password"].used,
-        body section.content form input[type="tel"].taken,
-        body section.content form input[type="tel"].used,
-        body section.content form input[type="email"].taken,
-        body section.content form input[type="email"].used,
-        body section.content form input[type="url"].taken,
-        body section.content form input[type="url"].used,
-        body section.content form textarea.taken,
-        body section.content form textarea.used,
-        body section.content form select.taken,
-        body section.content form select.used {
+        body section.content form:not(.login) input[type="text"].taken, body section.content form:not(.login) input[type="text"].used,
+        body section.content form:not(.login) input[type="password"].taken,
+        body section.content form:not(.login) input[type="password"].used,
+        body section.content form:not(.login) input[type="tel"].taken,
+        body section.content form:not(.login) input[type="tel"].used,
+        body section.content form:not(.login) input[type="email"].taken,
+        body section.content form:not(.login) input[type="email"].used,
+        body section.content form:not(.login) input[type="url"].taken,
+        body section.content form:not(.login) input[type="url"].used,
+        body section.content form:not(.login) textarea.taken,
+        body section.content form:not(.login) textarea.used,
+        body section.content form:not(.login) select.taken,
+        body section.content form:not(.login) select.used {
           border-color: #f00 !important;
           z-index: 100; }
-          body section.content form input[type="text"].taken:not(:first-child), body section.content form input[type="text"].used:not(:first-child),
-          body section.content form input[type="password"].taken:not(:first-child),
-          body section.content form input[type="password"].used:not(:first-child),
-          body section.content form input[type="tel"].taken:not(:first-child),
-          body section.content form input[type="tel"].used:not(:first-child),
-          body section.content form input[type="email"].taken:not(:first-child),
-          body section.content form input[type="email"].used:not(:first-child),
-          body section.content form input[type="url"].taken:not(:first-child),
-          body section.content form input[type="url"].used:not(:first-child),
-          body section.content form textarea.taken:not(:first-child),
-          body section.content form textarea.used:not(:first-child),
-          body section.content form select.taken:not(:first-child),
-          body section.content form select.used:not(:first-child) {
+          body section.content form:not(.login) input[type="text"].taken:not(:first-child), body section.content form:not(.login) input[type="text"].used:not(:first-child),
+          body section.content form:not(.login) input[type="password"].taken:not(:first-child),
+          body section.content form:not(.login) input[type="password"].used:not(:first-child),
+          body section.content form:not(.login) input[type="tel"].taken:not(:first-child),
+          body section.content form:not(.login) input[type="tel"].used:not(:first-child),
+          body section.content form:not(.login) input[type="email"].taken:not(:first-child),
+          body section.content form:not(.login) input[type="email"].used:not(:first-child),
+          body section.content form:not(.login) input[type="url"].taken:not(:first-child),
+          body section.content form:not(.login) input[type="url"].used:not(:first-child),
+          body section.content form:not(.login) textarea.taken:not(:first-child),
+          body section.content form:not(.login) textarea.used:not(:first-child),
+          body section.content form:not(.login) select.taken:not(:first-child),
+          body section.content form:not(.login) select.used:not(:first-child) {
             border-top-width: 1px;
             margin-top: -1px; }
-        body section.content form input[type="text"]:focus,
-        body section.content form input[type="password"]:focus,
-        body section.content form input[type="tel"]:focus,
-        body section.content form input[type="email"]:focus,
-        body section.content form input[type="url"]:focus,
-        body section.content form textarea:focus,
-        body section.content form select:focus {
+        body section.content form:not(.login) input[type="text"]:focus,
+        body section.content form:not(.login) input[type="password"]:focus,
+        body section.content form:not(.login) input[type="tel"]:focus,
+        body section.content form:not(.login) input[type="email"]:focus,
+        body section.content form:not(.login) input[type="url"]:focus,
+        body section.content form:not(.login) textarea:focus,
+        body section.content form:not(.login) select:focus {
           outline-width: 0;
           border-color: #fff;
           margin-top: -1px;
           border-top-width: 1px; }
-        body section.content form input[type="text"]::-webkit-input-placeholder,
-        body section.content form input[type="password"]::-webkit-input-placeholder,
-        body section.content form input[type="tel"]::-webkit-input-placeholder,
-        body section.content form input[type="email"]::-webkit-input-placeholder,
-        body section.content form input[type="url"]::-webkit-input-placeholder,
-        body section.content form textarea::-webkit-input-placeholder,
-        body section.content form select::-webkit-input-placeholder {
+        body section.content form:not(.login) input[type="text"]::-webkit-input-placeholder,
+        body section.content form:not(.login) input[type="password"]::-webkit-input-placeholder,
+        body section.content form:not(.login) input[type="tel"]::-webkit-input-placeholder,
+        body section.content form:not(.login) input[type="email"]::-webkit-input-placeholder,
+        body section.content form:not(.login) input[type="url"]::-webkit-input-placeholder,
+        body section.content form:not(.login) textarea::-webkit-input-placeholder,
+        body section.content form:not(.login) select::-webkit-input-placeholder {
           color: rgba(255, 255, 255, 0.5);
           font-weight: lighter; }
-        body section.content form input[type="text"]:-moz-placeholder,
-        body section.content form input[type="password"]:-moz-placeholder,
-        body section.content form input[type="tel"]:-moz-placeholder,
-        body section.content form input[type="email"]:-moz-placeholder,
-        body section.content form input[type="url"]:-moz-placeholder,
-        body section.content form textarea:-moz-placeholder,
-        body section.content form select:-moz-placeholder {
+        body section.content form:not(.login) input[type="text"]:-moz-placeholder,
+        body section.content form:not(.login) input[type="password"]:-moz-placeholder,
+        body section.content form:not(.login) input[type="tel"]:-moz-placeholder,
+        body section.content form:not(.login) input[type="email"]:-moz-placeholder,
+        body section.content form:not(.login) input[type="url"]:-moz-placeholder,
+        body section.content form:not(.login) textarea:-moz-placeholder,
+        body section.content form:not(.login) select:-moz-placeholder {
           color: rgba(255, 255, 255, 0.5);
           font-weight: lighter; }
-        body section.content form input[type="text"]::-moz-placeholder,
-        body section.content form input[type="password"]::-moz-placeholder,
-        body section.content form input[type="tel"]::-moz-placeholder,
-        body section.content form input[type="email"]::-moz-placeholder,
-        body section.content form input[type="url"]::-moz-placeholder,
-        body section.content form textarea::-moz-placeholder,
-        body section.content form select::-moz-placeholder {
+        body section.content form:not(.login) input[type="text"]::-moz-placeholder,
+        body section.content form:not(.login) input[type="password"]::-moz-placeholder,
+        body section.content form:not(.login) input[type="tel"]::-moz-placeholder,
+        body section.content form:not(.login) input[type="email"]::-moz-placeholder,
+        body section.content form:not(.login) input[type="url"]::-moz-placeholder,
+        body section.content form:not(.login) textarea::-moz-placeholder,
+        body section.content form:not(.login) select::-moz-placeholder {
           color: rgba(255, 255, 255, 0.5);
           font-weight: lighter; }
-        body section.content form input[type="text"]:-ms-input-placeholder,
-        body section.content form input[type="password"]:-ms-input-placeholder,
-        body section.content form input[type="tel"]:-ms-input-placeholder,
-        body section.content form input[type="email"]:-ms-input-placeholder,
-        body section.content form input[type="url"]:-ms-input-placeholder,
-        body section.content form textarea:-ms-input-placeholder,
-        body section.content form select:-ms-input-placeholder {
+        body section.content form:not(.login) input[type="text"]:-ms-input-placeholder,
+        body section.content form:not(.login) input[type="password"]:-ms-input-placeholder,
+        body section.content form:not(.login) input[type="tel"]:-ms-input-placeholder,
+        body section.content form:not(.login) input[type="email"]:-ms-input-placeholder,
+        body section.content form:not(.login) input[type="url"]:-ms-input-placeholder,
+        body section.content form:not(.login) textarea:-ms-input-placeholder,
+        body section.content form:not(.login) select:-ms-input-placeholder {
           color: rgba(255, 255, 255, 0.5);
           font-weight: lighter; }
     body section.content ul form {
@@ -254,6 +254,216 @@ body {
       body section.content p, body section.content p a, body section.content p a:hover {
         color: rgba(255, 255, 255, 0.6); }
 
+.user-info {
+  display: none;
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 100px;
+  top: 50px;
+  position: relative; }
+
+#dummy {
+  filter: blur(5px);
+  -webkit-filter: blur(5px); }
+
+body.login {
+  background: white;
+  @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300); }
+  body.login * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: 300; }
+  body.login body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    font-weight: 300; }
+  body.login ::-webkit-input-placeholder {
+    /* WebKit browsers */
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    font-weight: 300; }
+  body.login :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    opacity: 1;
+    font-weight: 300; }
+  body.login ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    opacity: 1;
+    font-weight: 300; }
+  body.login :-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    font-weight: 300; }
+  body.login .wrapper {
+    background: #50a3a2;
+    background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+    background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    margin-top: -200px;
+    overflow: hidden;
+    -webkit-transition: height 1s, margin-top 1s;
+    transition: height 1s, margin-top 1s; }
+  body.login .wrapper.form-success .container h1 {
+    -webkit-transform: translateY(85px);
+    -ms-transform: translateY(85px);
+    transform: translateY(85px); }
+  body.login .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 80px 0;
+    height: 400px;
+    text-align: center; }
+  body.login .container h1 {
+    font-size: 40px;
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transition-timing-function: ease-in-put;
+    transition-timing-function: ease-in-put;
+    font-weight: 200; }
+  body.login form {
+    padding: 20px 0;
+    position: relative;
+    z-index: 2; }
+  body.login form input {
+    appearance: none;
+    outline: 0;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 250px;
+    border-radius: 3px;
+    padding: 10px 15px;
+    margin: 0 auto 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    font-weight: 300; }
+  body.login form input:hover {
+    background-color: rgba(255, 255, 255, 0.4); }
+  body.login form input:focus {
+    background-color: white;
+    width: 300px;
+    color: #53e3a6; }
+  body.login form button {
+    appearance: none;
+    outline: 0;
+    background-color: white;
+    border: 0;
+    padding: 10px 15px;
+    color: #53e3a6;
+    border-radius: 3px;
+    width: 250px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s; }
+  body.login form button:hover {
+    background-color: #f5f7f9; }
+  body.login .bg-bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; }
+  body.login .bg-bubbles li {
+    position: absolute;
+    list-style: none;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.15);
+    bottom: -160px;
+    -webkit-animation: square 25s infinite;
+    animation: square 25s infinite;
+    -webkit-transition-timing-function: linear;
+    transition-timing-function: linear; }
+  body.login .bg-bubbles li:nth-child(1) {
+    left: 10%; }
+  body.login .bg-bubbles li:nth-child(2) {
+    left: 20%;
+    width: 80px;
+    height: 80px;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-animation-duration: 17s;
+    animation-duration: 17s; }
+  body.login .bg-bubbles li:nth-child(3) {
+    left: 25%;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s; }
+  body.login .bg-bubbles li:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    -webkit-animation-duration: 22s;
+    animation-duration: 22s;
+    background-color: rgba(255, 255, 255, 0.25); }
+  body.login .bg-bubbles li:nth-child(5) {
+    left: 70%; }
+  body.login .bg-bubbles li:nth-child(6) {
+    left: 80%;
+    width: 120px;
+    height: 120px;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+    background-color: rgba(255, 255, 255, 0.2); }
+  body.login .bg-bubbles li:nth-child(7) {
+    left: 32%;
+    width: 160px;
+    height: 160px;
+    -webkit-animation-delay: 7s;
+    animation-delay: 7s; }
+  body.login .bg-bubbles li:nth-child(8) {
+    left: 55%;
+    width: 20px;
+    height: 20px;
+    -webkit-animation-delay: 15s;
+    animation-delay: 15s;
+    -webkit-animation-duration: 40s;
+    animation-duration: 40s; }
+  body.login .bg-bubbles li:nth-child(9) {
+    left: 25%;
+    width: 10px;
+    height: 10px;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-animation-duration: 40s;
+    animation-duration: 40s;
+    background-color: rgba(255, 255, 255, 0.3); }
+  body.login .bg-bubbles li:nth-child(10) {
+    left: 90%;
+    width: 160px;
+    height: 160px;
+    -webkit-animation-delay: 11s;
+    animation-delay: 11s; }
+@-webkit-keyframes square {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
+  100% {
+    -webkit-transform: translateY(-700px) rotate(600deg);
+    transform: translateY(-700px) rotate(600deg); } }
+@keyframes square {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
+  100% {
+    -webkit-transform: translateY(-700px) rotate(600deg);
+    transform: translateY(-700px) rotate(600deg); } }
 body.about {
   background-color: #0ac0c2;
   color: #fff;
@@ -291,3 +501,5 @@ body.user form input#state {
   width: 30%; }
 body.user form input#postal_code {
   width: 30%; }
+
+/*# sourceMappingURL=style.css.map */

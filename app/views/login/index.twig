@@ -1,28 +1,45 @@
-{% extends 'template.twig' %}
+{% extends 'template-light.twig' %}
 {% block title %}Login{% endblock %}
 {% block page %}login{% endblock %}
 {% block section %}login{% endblock %}
 {% block content %}
-    <h1>StudentRND Login</h1>
-    {% if logged_out %}
-        <section class="success">
-            You have been logged out.
-        </section>
-    {% elseif invalid_login %}
-        <section class="error">
-            That username does not exist or the password did not match.
-        </section>
-    {% endif %}
-    <form method="post">
-        <section>
-            <input type="text" name="username" id="username" placeholder="Username" required />
-            <input type="password" name="password" id="password" placeholder="Password" required />
-        </section>
-        <input type="submit" value="Login" />
+  <div class="wrapper">
+  	<div class="container">
+  		<div class="welcome">
+        <h1 class="welcome-message">Welcome to s5</h1>
+        <div class="user-info"></div>
+      </div>
+
+  		<form class="login" id="main-login">
+  			<input type="text" placeholder="Username" id="username">
+  			<input type="password" placeholder="Password" id="password">
+  			<button type="submit" id="login">Login</button><br><br>
         {{ csrf|raw }}
-    </form>
-    <p><a href="/invite/cq5l2rEydV3p5g0rGjvitNXT2rzq87Xa">Need to register for an account?</a></p>
+        <a href="/invite/cq5l2rEydV3p5g0rGjvitNXT2rzq87Xa"><small>Need an account?</small></a>
+  		</form>
+
+      <form class="login" id="second-factor" style="display: none">
+        <div style="text-align: center">Enter the code from Google Authenticator or your YubiKey.</div><br>
+        <input type="text" placeholder="Second-Factor Code" id="code">
+        {{ csrf|raw }}
+        <button type="submit" id="login-second-factor">Login</button>
+      </form>
+  	</div>
+
+  	<ul class="bg-bubbles">
+  		<li></li>
+  		<li></li>
+  		<li></li>
+  		<li></li>
+  		<li></li>
+  		<li></li>
+  		<li></li>
+  		<li></li>
+  		<li></li>
+  		<li></li>
+  	</ul>
+  </div>
 {% endblock %}
 {% block scripts %}
-    <script type="text/javascript" src="/assets/js/login.js"></script>
+  <script type="text/javascript" src="/assets/js/login.js"></script>
 {% endblock %}

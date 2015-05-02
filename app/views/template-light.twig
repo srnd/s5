@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>{% if block('title') %}{{ block('title') }} // {% endif %}StudentRND s5</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body
+    {% if block('page') or block('section') %}
+        class="{% if block('page') %}
+                    {{ block('page') }}
+                {% else %}
+                    {{ block('section') }}
+                {% endif %}"
+    {% endif %}>
+<script type="text/javascript" data-cfasync="false" src="//use.typekit.net/mvs6fyv.js"></script>
+<script type="text/javascript" data-cfasync="false">try{Typekit.load();}catch(e){}</script>
+<script type="text/javascript" src="/assets/js/rainbow-background.js" data-cfasync="false"></script>
+
+{{ block('before') }}
+<section class="content">
+    {{ block('content') }}
+</section>
+{{ block('after') }}
+<script type="text/javascript" src="/assets/js/jquery.js"></script>
+<script type="text/javascript" src="/assets/js/util.js"></script>
+{{ block('scripts') }}
+</body>
+</html>

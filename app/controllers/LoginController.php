@@ -24,22 +24,32 @@ class LoginController extends BaseController {
             return $this->auto_redirect();
         }
 
+        $ajax = (Request::header('X-Requested-With') == "XMLHttpRequest");
+
         $user = User::where('username', '=', Input::get('username'))->first();
 
         if (count($user->second_factors) === 0) {
-            return $this->doLogin();
+          return $this->doLogin($ajax);
         } elseif (\Input::get('code')) {
             if ($user->validate2fa(\Input::get('code'))) {
-                return $this->doLogin();
+              return $this->doLogin($ajax);
             } else {
+              if($ajax){
+                return json_encode(['success' => false, 'code' => \Input::get('code')]);
+              }else{
                 return View::make('login/index', ['invalid_login' => true]);
+              }
             }
         } else {
+          if($ajax){
+            return json_encode(['success' => false, 'second_factor' => true]);
+          }else{
             return View::make('login/2fa', ['username' => \Input::get('username'), 'password' => \Input::get('password')]);
+          }
         }
     }
 
-    private function doLogin()
+    private function doLogin($ajax = false)
     {
         $user = User::where('username', '=', Input::get('username'))->first();
 
@@ -58,9 +68,17 @@ class LoginController extends BaseController {
 
         if ($password_matches) {
             Auth::login($user, !$user->is_admin);
-            return $this->auto_redirect();
+            if($ajax){
+              return json_encode(['success' => true]);
+            }else{
+              return $this->auto_redirect();
+            }
         } else {
+          if($ajax){
+            return json_encode(['success' => false]);
+          }else{
             return View::make('login/index', ['invalid_login' => true]);
+          }
         }
     }
 
