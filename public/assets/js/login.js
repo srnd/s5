@@ -21,6 +21,7 @@
         if(data.second_factor){
           $('#main-login').fadeOut(function(){
             $('#second-factor').fadeIn();
+            $('#code').focus();
           });
         }else{
           if(data.success){
