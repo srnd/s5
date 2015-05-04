@@ -35,14 +35,14 @@ class LoginController extends BaseController {
               return $this->doLogin($ajax);
             } else {
               if($ajax){
-                return json_encode(['success' => false, 'code' => \Input::get('code')]);
+                return json_encode(['success' => false]);
               }else{
                 return View::make('login/index', ['invalid_login' => true]);
               }
             }
         } else {
           if($ajax){
-            return json_encode(['success' => false, 'second_factor' => true]);
+            return json_encode(['success' => true, 'second_factor' => true]);
           }else{
             return View::make('login/2fa', ['username' => \Input::get('username'), 'password' => \Input::get('password')]);
           }

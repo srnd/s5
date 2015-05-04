@@ -3,6 +3,14 @@
     return {username: $("#username").val(), password: $("#password").val(), code: $("#code").val(), _token: $("input[name='_token']").val()};
   }
 
+  // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+  function getQueryParam(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+
   function checkLogin(){
     $.ajax({
       url: '/login',
@@ -30,10 +38,13 @@
             setTimeout(function(){
               $('.container').fadeOut(function(){
                 $('.wrapper').css('height', '0%').css('margin-top', '0px');
+                window.location = getQueryParam("after") ? decodeURIComponent(getQueryParam("return")) : "/";
               });
-              window.location = "/";
             }, 1500);
           }else{
+            $('#second-factor').fadeOut(function(){
+              $('#main-login').fadeIn();
+            });
             alert("Invalid login credentials.");
           }
         }
